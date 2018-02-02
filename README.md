@@ -1,6 +1,6 @@
 # podcast-social-network
 
-#### By Esti Shay, Jeff Bailey, & Schola Choi
+#### By [Esti Shay](https://www.github.com/estishay), [Jeff Bailey](https://github.com/northwestjeff), & [Schola Choi](https://github.com/scholachoi)
 
 ## Description
 
