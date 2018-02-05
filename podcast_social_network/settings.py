@@ -36,7 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'podcast.apps.PodcastConfig',
+
 ]
+
+AUTH_USER_MODEL = 'podcast.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
