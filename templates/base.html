@@ -6,13 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Podcast Social Network</title>
+    <link rel="stylesheet" href="{% static 'podcast/CSS/style.css' %}">
 </head>
 
 <div class="navbar">
-    Navbar
+    Navbar {{ user }} <br>
+    <a href="/logout/">Logout</a>
+    <a href="/">Home</a>
+    <a href="#"> My Podcasts</a>
+    <a href="/search/">Podcast Search</a>
+    <a href="#">Settings</a>
 </div>
 
 <body>
     {% block content %}
     {% endblock %}
+
+
 </body>

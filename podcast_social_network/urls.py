@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', podcast_views.home, name='home'),
     url(r'signup/', podcast_views.signup, name='signup'),
-    url(r'login/', auth_views.login, name='login'),
-    url(r'signup/', auth_views.logout, name='logout'),
+    url(r'login/', auth_views.login, {'template_name':'podcast/login.html'}, name='login'),
+    url(r'logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'search/', podcast_views.searchPage, name='searchpage'),
+
 ]

@@ -25,6 +25,8 @@ def signup(request):
     return render(request, 'podcast/signup.html', {"form": form})
 
 
+def searchPage(request):
+    return render(request, 'podcast/search.html', {})
 
 
 
