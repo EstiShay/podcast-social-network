@@ -1,0 +1,1 @@
+web: gunicorn podcast_social_network.wsgi --log-file -
