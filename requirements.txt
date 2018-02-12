@@ -1,7 +1,7 @@
+psycopg2
 dj-database-url==0.4.2
 Django==2.0.2
 python-decouple==3.1
 whitenoise==3.3.1
 dj_static
 gunicorn
-psycopg2
