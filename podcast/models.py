@@ -12,5 +12,14 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=30, blank=True)
 
+class Podcast(models.Model):
+    title = models.CharField(max_length=250)
+    collection_id = models.CharField(max_length=250)
+    network = models.CharField(max_length=250)
+    small_art = models.CharField(max_length=250)
+    large_art = models.CharField(max_length=250)
+    rss_feed_link = models.CharField(max_length=250)
 
+    def __str__(self):
+        self.title = title
 
