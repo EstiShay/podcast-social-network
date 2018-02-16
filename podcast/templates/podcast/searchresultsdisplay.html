@@ -1,0 +1,21 @@
+
+<h2>searchResultsDisplay</h2>{{ search_term }}
+
+{{ search_result|length }}
+{{ var_type }}
+{{ var_length }}
+{#{{ search_result|safe }}#}
+
+
+
+{% for i in search_result %}
+    <h1>{{ i.kind }}</h1>
+    <p><a href=""></a>{{ i.trackName }}</p>
+    <p>{{ i.artistName }}</p>
+    <img src={{ i.artworkUrl60 }} alt="">
+    <p>{{ i.artworkUrl60 }}</p>
+    <p>{{ i.feedUrl }}</p>
+    <br>
+    <br>
+{% endfor %}
+

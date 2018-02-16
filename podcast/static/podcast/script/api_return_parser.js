@@ -1,21 +1,3 @@
-// using jQuery
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
-
 search_return = {
     "resultCount": 21,
     "results": [
@@ -742,42 +724,3 @@ search_return = {
             "genres": ["Games & Hobbies", "Podcasts", "Automotive"]
         }]
 }
-$('#podcast-search-form').focus()
-
-$('#podcast-search-form').submit(function (e) {
-    e.preventDefault();
-    const searchString = $('#input-search-field').val();
-    $.ajax({
-        // type: 'GET',
-        type: 'POST',
-        url: /searchresultsdisplay/,
-        data: {
-            searchParam: searchString,
-            csrfmiddlewaretoken: csrftoken,
-        },
-        // url: 'https://itunes.apple.com/search?term='+searchString+'&limit=6&media=podcast',
-        // data: {
-        //     searchParam: searchString
-        // },
-        success: function (response) {
-            console.log("EEEEe" + response);
-             $('#search-results').html(response);
-            // const temp = JSON.parse(response);
-            // const tempArray = temp.results;
-            // // console.log(temp.resultCount);
-            // // console.log("----");
-            // console.log(tempArray);
-            // for (var i = 0; i < tempArray.length; i++) {
-            //     const div = document.createElement('div');
-            //     document.body.appendChild(div);
-            //     // div.innerHTML = tempArray[i].feedUrl;
-            //     div.innerHTML = tempArray[i].trackName;
-            // }
-        },
-        error: function () {
-            console.log("fail")
-        }
-        // )
-    });
-})
-;
