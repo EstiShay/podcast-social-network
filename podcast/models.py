@@ -22,7 +22,7 @@ class Podcast(models.Model):
 
     def __str__(self):
         self.title = title
-        
+
 class Episode(models.Model):
     title = models.CharField(max_length=100)
     release_date = models.DateField()
@@ -30,3 +30,8 @@ class Episode(models.Model):
     podcast = models.ForeignKey('Podcast', on_delete=models.CASCADE)
     audio_link = models.CharField(max_length=200)
 
+
+class Listening(models.Model):
+    ''' Relationships: users following other users '''
+    listener = models.ForeignKey(User)
+    speaker = models.ForeignKey(User)
