@@ -63,3 +63,7 @@ def addPodcastToModel(call_list):
             rss_feed_link=i['feedUrl']
 
         )
+
+def userProfile(request, username):
+    user = User.objects.get(username=username)
+    return render(request, 'podcast/user_profile.html',{"user": user})

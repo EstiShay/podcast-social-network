@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-
 from django.conf.urls import url
 from podcast import views as podcast_views
 from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,5 +28,7 @@ urlpatterns = [
     url(r'search/', podcast_views.searchPage, name='searchpage'),
     url(r'searchresultsdisplay/', podcast_views.searchResultsDisplay, name='searchresultsdisplay'),
     # url(r'episodedisplay/', podcast_views.episodedisplay, name='episodedisplay'),
+    url(r'(?P<username>[\w.@+-]+)$', podcast_views.userProfile, name='user_profile'),
 
 ]
+
