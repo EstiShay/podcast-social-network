@@ -1,0 +1,18 @@
+
+<h2>searchResultsDisplay</h2>
+
+
+{% for i in search_result %}
+    <h1>{{ i.kind }}</h1>
+    <a href="#"><p>{{ i.trackName }}</p></a>
+    <p>{{ i.artistName }}</p>
+    <img src={{ i.artworkUrl60 }} alt="">
+    <p>{{ i.artworkUrl60 }}</p>
+    <p>{{ i.feedUrl }}</p>
+    <div class="episodes">
+
+    </div>
+    <br>
+    <br>
+{% endfor %}
+
