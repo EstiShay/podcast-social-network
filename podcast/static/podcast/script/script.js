@@ -15,13 +15,6 @@ function getCookie(name) {
     return cookieValue;
 }
 
-//
-// $('.podcast-cover-image').click(function (e) {
-//     console.log(e);
-//     // e.preventDefault();
-//     console.log('click')
-// });
-
 
 var csrftoken = getCookie('csrftoken');
 
@@ -755,7 +748,6 @@ $('#podcast-search-form').focus();
 
 
 $('#podcast-search-form').submit(function (e) {
-    console.log(e);
     e.preventDefault();
     const searchString = $('#input-search-field').val();
     $.ajax({
@@ -776,9 +768,8 @@ $('#podcast-search-form').submit(function (e) {
 })
 ;
 
-function clickCoverImage(xml_link, div_id) {
+function clickCoverImage(xml_link, div_id, podcast_name) {
     const rss_feed = xml_link;
-    console.log(xml_link);
     event.preventDefault();
     $.ajax({
         type: 'POST',
@@ -786,11 +777,12 @@ function clickCoverImage(xml_link, div_id) {
         data: {
             rss_feed: rss_feed,
             div_id: div_id,
+            podcast_name: podcast_name,
             csrfmiddlewaretoken: csrftoken,
 
         },
         success: function (response) {
-            const episode_div =  document.getElementById(div_id);
+            const episode_div = document.getElementById(div_id);
             episode_div.innerHTML = response
         },
         error: function () {
@@ -799,11 +791,6 @@ function clickCoverImage(xml_link, div_id) {
 
     })
 }
-
-// function submitPodcastSearch(event) {
-//     console.log(event)
-// }
-
 
 
 

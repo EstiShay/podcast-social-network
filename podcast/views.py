@@ -1,17 +1,11 @@
 import urllib.request
-import requests
-from urllib import request
 import json
-import xmltodict
-from podcast.models import Podcast
+from podcast.models import Podcast, Episode, User
 from podcast.services import xmlToJson, UrlFinder
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
-
-from django.contrib.auth.forms import UserCreationForm
-from podcast.models import User
 
 
 def home(request):
@@ -75,3 +69,18 @@ def episodeDisplay(request):
     episodes_list = UrlFinder(episodes)
     return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list,
                                                            'div_id': div_id})
+
+
+def addEpisodeToModel(episode_list):
+    for i in episode_list:
+        if Episode.objects.filter(title=i['title']):
+            return
+        else:
+            Episode.objects.create(
+                title=i['title'],
+                description=i['description'],
+                release_date=i['pub_date'],
+                podcast=i['podcast'],
+                audio_link=i['audio_link']
+
+            )

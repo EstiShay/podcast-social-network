@@ -5,3 +5,8 @@ body {
 .navbar {
     background-color: aliceblue;
 }
+
+.episode-seperator {
+    border: solid 2px black;
+    width: 100%;
+}
