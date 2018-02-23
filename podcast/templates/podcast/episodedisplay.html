@@ -1,0 +1,23 @@
+
+{% block content %}
+    {% autoescape off %}
+        {% for i in episodes_list %}
+            <h3>Title</h3><br>
+            {{ i.title }}<br>
+            <h3>Audio Link</h3><br>
+{#            {{ i.audio_link }}<br>#}
+            <audio controls src="{{ i.audio_link }}"></audio>
+            <h3>Description</h3><br>
+            {{ i.description }}<br>
+            <h3>Publishing Date</h3><br>
+            {{ i.pub_date }}<br>
+            <br>
+            <p>--------</p>
+            <br>
+        {% endfor %}
+    {% endautoescape %}
+
+
+
+
+{% endblock %}

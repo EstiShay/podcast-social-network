@@ -1,18 +1,17 @@
-
 <h2>searchResultsDisplay</h2>
 
 
 {% for i in search_result %}
-    <h1>{{ i.kind }}</h1>
-    <a href="#"><p>{{ i.trackName }}</p></a>
-    <p>{{ i.artistName }}</p>
-    <img src={{ i.artworkUrl60 }} alt="">
-    <p>{{ i.artworkUrl60 }}</p>
+    <p>{{ i.trackName }}</p>
+    {#    <a href="/episodedisplay/" id={{ i.rss_feed_url }}><img src={{ i.artworkUrl60 }} alt=""></a>#}
+    <img src="{{ i.artworkUrl60 }}" alt="image" onclick="clickCoverImage('{{ i.feedUrl }}', {{ i.collectionId }})"
+         class="podcast-cover-image">
     <p>{{ i.feedUrl }}</p>
-    <div class="episodes">
+    <div class="episodes" id="{{ i.collectionId }}">
 
     </div>
     <br>
     <br>
+
 {% endfor %}
 

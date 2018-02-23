@@ -4,6 +4,7 @@ from urllib import request
 import json
 import xmltodict
 from podcast.models import Podcast
+from podcast.services import xmlToJson, UrlFinder
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -54,12 +55,23 @@ def searchResultsDisplay(request):
 
 def addPodcastToModel(call_list):
     for i in call_list:
-        Podcast.objects.create(
-            title=i['collectionName'],
-            collection_id=i['collectionId'],
-            network=i['artistName'],
-            small_art=i['artworkUrl60'],
-            large_art=i['artworkUrl100'],
-            rss_feed_link=i['feedUrl']
+        if Podcast.objects.filter(collection_id=i['collectionId']):
+            return
+        else:
+            Podcast.objects.create(
+                title=i['collectionName'],
+                collection_id=i['collectionId'],
+                artist_name=i['artistName'],
+                small_art=i['artworkUrl60'],
+                large_art=i['artworkUrl100'],
+                rss_feed_link=i['feedUrl']
+            )
 
-        )
+
+def episodeDisplay(request):
+    rss_feed = request.POST.get('rss_feed')
+    div_id = request.POST.get('div_id')
+    episodes = xmlToJson(rss_feed)
+    episodes_list = UrlFinder(episodes)
+    return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list,
+                                                           'div_id': div_id})

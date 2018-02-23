@@ -4,10 +4,12 @@
 {% block content %}
 
 
+    <h1 class="podcast-cover-image">test</h1>
+
     <form method="post" id="podcast-search-form">{% csrf_token %}
         <h2>Podcast Search:</h2>
         <input type="text" placeholder="search..." id="input-search-field" autofocus="autofocus">
-        <button type="submit" >Search</button>
+        <button type="submit" onclick="submitPodcastSearch(event)">Search</button>
     </form>
 
     <div id="search-results">

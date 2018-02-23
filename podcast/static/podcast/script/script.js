@@ -14,6 +14,15 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+//
+// $('.podcast-cover-image').click(function (e) {
+//     console.log(e);
+//     // e.preventDefault();
+//     console.log('click')
+// });
+
+
 var csrftoken = getCookie('csrftoken');
 
 search_return = {
@@ -741,10 +750,12 @@ search_return = {
             "genreIds": ["1323", "26", "1454"],
             "genres": ["Games & Hobbies", "Podcasts", "Automotive"]
         }]
-}
-$('#podcast-search-form').focus()
+};
+$('#podcast-search-form').focus();
+
 
 $('#podcast-search-form').submit(function (e) {
+    console.log(e);
     e.preventDefault();
     const searchString = $('#input-search-field').val();
     $.ajax({
@@ -755,29 +766,49 @@ $('#podcast-search-form').submit(function (e) {
             searchParam: searchString,
             csrfmiddlewaretoken: csrftoken,
         },
-        // url: 'https://itunes.apple.com/search?term='+searchString+'&limit=6&media=podcast',
-        // data: {
-        //     searchParam: searchString
-        // },
         success: function (response) {
-            console.log("EEEEe" + response);
-             $('#search-results').html(response);
-            // const temp = JSON.parse(response);
-            // const tempArray = temp.results;
-            // // console.log(temp.resultCount);
-            // // console.log("----");
-            // console.log(tempArray);
-            // for (var i = 0; i < tempArray.length; i++) {
-            //     const div = document.createElement('div');
-            //     document.body.appendChild(div);
-            //     // div.innerHTML = tempArray[i].feedUrl;
-            //     div.innerHTML = tempArray[i].trackName;
-            // }
+            $('#search-results').html(response)
         },
         error: function () {
             console.log("fail")
         }
-        // )
     });
 })
 ;
+
+function clickCoverImage(xml_link, div_id) {
+    const rss_feed = xml_link;
+    console.log(xml_link);
+    event.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '/episodedisplay/',
+        data: {
+            rss_feed: rss_feed,
+            div_id: div_id,
+            csrfmiddlewaretoken: csrftoken,
+
+        },
+        success: function (response) {
+            const episode_div =  document.getElementById(div_id);
+            episode_div.innerHTML = response
+        },
+        error: function () {
+            console.log('fail')
+        }
+
+    })
+}
+
+// function submitPodcastSearch(event) {
+//     console.log(event)
+// }
+
+
+
+
+
+
+
+
+
