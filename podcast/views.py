@@ -96,3 +96,12 @@ def addToLikes(request):
                                 )
     # return render(request, 'podcast/searchresultdisplay.html', {})
     return
+
+def newsFeed(request):
+    user = request.user
+    liked_episodes = LikedPodcast.objects.filter(user=user)
+    return render(request, 'podcast/newsfeed.html', {"liked_episodes": liked_episodes})
+
+def newsFeedEpisodeBuilder(current_user):
+    return
+

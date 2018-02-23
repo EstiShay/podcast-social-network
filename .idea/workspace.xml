@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cbaee92-99c8-41dd-8e83-03e82f998144" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/podcast/migrations/0003_auto_20180223_0122.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/admin.py" afterPath="$PROJECT_DIR$/podcast/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/models.py" afterPath="$PROJECT_DIR$/podcast/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/services.py" afterPath="$PROJECT_DIR$/podcast/services.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/static/podcast/script/script.js" afterPath="$PROJECT_DIR$/podcast/static/podcast/script/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/templates/podcast/episodedisplay.html" afterPath="$PROJECT_DIR$/podcast/templates/podcast/episodedisplay.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html" afterPath="$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/views.py" afterPath="$PROJECT_DIR$/podcast/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast_social_network/urls.py" afterPath="$PROJECT_DIR$/podcast_social_network/urls.py" />
     </list>
@@ -54,45 +50,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/podcast/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="457">
+              <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/podcast/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/podcast_social_network/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="48" />
-              <folding>
-                <element signature="e#646#678#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/podcast/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="97" column="10" lean-forward="false" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
+            <state relative-caret-position="465">
+              <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -100,63 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
+      <file leaf-file-name="newsfeed.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="803" column="36" lean-forward="false" selection-start-line="803" selection-start-column="14" selection-end-line="803" selection-end-column="36" />
-              <folding>
-                <element signature="e#689#2658#0" expanded="false" />
-                <element signature="e#2668#4781#0" expanded="false" />
-                <element signature="e#4791#6905#0" expanded="false" />
-                <element signature="e#6915#8974#0" expanded="false" />
-                <element signature="e#8984#10904#0" expanded="false" />
-                <element signature="e#10914#12980#0" expanded="false" />
-                <element signature="e#12990#14907#0" expanded="false" />
-                <element signature="e#14917#17048#0" expanded="false" />
-                <element signature="e#17058#18965#0" expanded="false" />
-                <element signature="e#18975#21067#0" expanded="false" />
-                <element signature="e#21077#23052#0" expanded="false" />
-                <element signature="e#23062#24925#0" expanded="false" />
-                <element signature="e#24935#26954#0" expanded="false" />
-                <element signature="e#26964#29260#0" expanded="false" />
-                <element signature="e#29270#31405#0" expanded="false" />
-                <element signature="e#31415#33275#0" expanded="false" />
-                <element signature="e#33285#35174#0" expanded="false" />
-                <element signature="e#35184#37341#0" expanded="false" />
-                <element signature="e#37351#39273#0" expanded="false" />
-                <element signature="e#39283#41198#0" expanded="false" />
-                <element signature="e#41208#43209#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/podcast/services.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="26" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="episodedisplay.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/episodedisplay.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="79" lean-forward="false" selection-start-line="14" selection-start-column="79" selection-end-line="14" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchresultsdisplay.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/searchresultsdisplay.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="49" />
+            <state relative-caret-position="120">
+              <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -201,7 +121,6 @@
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/podcast_social_network/wsgi.py" />
         <option value="$PROJECT_DIR$/podcast_social_network/settings.py" />
-        <option value="$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html" />
         <option value="$PROJECT_DIR$/podcast/static/podcast/script/return_example.txt" />
         <option value="$PROJECT_DIR$/podcast/static/podcast/script/api_return_parser.js" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -209,13 +128,14 @@
         <option value="$PROJECT_DIR$/podcast/templates/podcast/search.html" />
         <option value="$PROJECT_DIR$/podcast/static/podcast/CSS/style.css" />
         <option value="$PROJECT_DIR$/podcast/services.py" />
-        <option value="$PROJECT_DIR$/podcast_social_network/urls.py" />
         <option value="$PROJECT_DIR$/podcast/templates/podcast/searchresultsdisplay.html" />
         <option value="$PROJECT_DIR$/podcast/templates/podcast/episodedisplay.html" />
         <option value="$PROJECT_DIR$/podcast/static/podcast/script/script.js" />
-        <option value="$PROJECT_DIR$/podcast/models.py" />
         <option value="$PROJECT_DIR$/podcast/admin.py" />
+        <option value="$PROJECT_DIR$/podcast_social_network/urls.py" />
+        <option value="$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html" />
         <option value="$PROJECT_DIR$/podcast/views.py" />
+        <option value="$PROJECT_DIR$/podcast/models.py" />
       </list>
     </option>
   </component>
@@ -415,7 +335,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="39" width="1384" height="861" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52387446" sideWeight="0.50596124" order="7" side_tool="true" content_ui="tabs" />
@@ -426,7 +345,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1251863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.097302504" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@podcast_social_network" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23368146" sideWeight="0.49403876" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@podcast_social_network" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23368146" sideWeight="0.49403876" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -797,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/api_return_parser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="732">
@@ -867,24 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/podcast/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/podcast/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/searchresultsdisplay.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -909,10 +803,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/podcast/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/podcast_social_network/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="48" />
+        <state relative-caret-position="465">
+          <caret line="31" column="60" lean-forward="false" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
           <folding>
             <element signature="e#646#678#0" expanded="true" />
           </folding>
@@ -921,8 +825,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="803" column="36" lean-forward="false" selection-start-line="803" selection-start-column="14" selection-end-line="803" selection-end-column="36" />
+        <state relative-caret-position="565">
+          <caret line="813" column="0" lean-forward="true" selection-start-line="813" selection-start-column="0" selection-end-line="813" selection-end-column="0" />
           <folding>
             <element signature="e#689#2658#0" expanded="false" />
             <element signature="e#2668#4781#0" expanded="false" />
@@ -949,13 +853,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/newsfeed.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/podcast/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="97" column="10" lean-forward="false" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
+        <state relative-caret-position="465">
+          <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/podcast/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="54" column="56" lean-forward="false" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
