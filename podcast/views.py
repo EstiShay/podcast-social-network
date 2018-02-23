@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from podcast.models import Podcast, Episode, User, LikedPodcast
+from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
 
 from django.shortcuts import render, redirect
@@ -97,11 +97,17 @@ def addToLikes(request):
     # return render(request, 'podcast/searchresultdisplay.html', {})
     return
 
+
 def newsFeed(request):
     user = request.user
-    liked_episodes = LikedPodcast.objects.filter(user=user)
-    return render(request, 'podcast/newsfeed.html', {"liked_episodes": liked_episodes})
+    following_list_objects = Follower.objects.filter(user=user)
+    following_list_users = []
+    for i in following_list_objects:
+        following_list_users.append(i.following)
+    following_list_liked_episodes = LikedPodcast.objects.filter(user__in=following_list_users)
 
-def newsFeedEpisodeBuilder(current_user):
-    return
-
+    return render(request, 'podcast/newsfeed.html', {"liked_episodes": following_list_liked_episodes,
+                                                     "user": user,
+                                                     "following_list_objects": following_list_objects,
+                                                     "following_list_users": following_list_users,
+                                                     })
