@@ -12,7 +12,7 @@
             <h3>Publishing Date</h3>
             {{ i.pub_date }}<br>
             <br>
-                <button id="{{ i.id }}" class="like-button">TELL THE WORLD YOU LIKE IT</button>
+                <button class="like-button" onclick="addToLikes('{{ i.title }}')">TELL THE WORLD YOU LIKE IT</button>
             </div>
             <br>
         {% endfor %}

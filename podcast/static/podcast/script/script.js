@@ -768,21 +768,21 @@ $('#podcast-search-form').submit(function (e) {
 })
 ;
 
-function clickCoverImage(xml_link, div_id, podcast_name) {
+function clickCoverImage(xml_link, collection_id, div_id) {
     const rss_feed = xml_link;
+    console.log(collection_id)
     event.preventDefault();
     $.ajax({
         type: 'POST',
         url: '/episodedisplay/',
         data: {
             rss_feed: rss_feed,
-            div_id: div_id,
-            podcast_name: podcast_name,
+            collection_id: collection_id,
+            // podcast_name: podcast_name,
             csrfmiddlewaretoken: csrftoken,
-
         },
         success: function (response) {
-            const episode_div = document.getElementById(div_id);
+            const episode_div = document.getElementById(collection_id);
             episode_div.innerHTML = response
         },
         error: function () {
@@ -790,6 +790,25 @@ function clickCoverImage(xml_link, div_id, podcast_name) {
         }
 
     })
+}
+
+function addToLikes(name) {
+    event.preventDefault();
+    $.ajax({
+            type: "POST",
+            url: '/addtolikes/',
+            data: {
+                episode_name: name,
+                csrfmiddlewaretoken: csrftoken,
+            },
+            success: function (response) {
+                console.log('success :')
+            },
+            error: function (response) {
+                console.log('fail :')
+            }
+        }
+    )
 }
 
 
