@@ -28,5 +28,7 @@ urlpatterns = [
     url(r'search/', podcast_views.searchPage, name='searchpage'),
     url(r'searchresultsdisplay/', podcast_views.searchResultsDisplay, name='searchresultsdisplay'),
     url(r'episodedisplay/', podcast_views.episodeDisplay, name='episodedisplay'),
+    url(r'addtolikes/', podcast_views.addToLikes, name='addtolikes'),
+    url(r'newsfeed/', podcast_views.newsFeed, name='newsfeed'),
 
 ]

@@ -1,1 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div id="newsfeed">
+        <h2>{{ liked_episodes }}</h2>
+        {% for i in liked_episodes %}
+            {{ i }}
+            {{ i.id}}
+            {{ i.user }}
+            {{ i.user.email }}
+            {{ i.episode.title }}<br>
+            {{ i.episode.podcast }}<br>
+            <br>
+        {% endfor %}
+
+
+
+    </div>
+{% endblock %}
+
 

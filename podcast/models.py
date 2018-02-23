@@ -8,9 +8,11 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     bio = models.TextField(max_length=144, null=True, blank=True)
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=30, blank=True)
+
 
 class Podcast(models.Model):
     title = models.CharField(max_length=250)
@@ -21,12 +23,33 @@ class Podcast(models.Model):
     rss_feed_link = models.CharField(max_length=250)
 
     def __str__(self):
-        self.title = title
-        
+        return self.title
+
+
 class Episode(models.Model):
     title = models.CharField(max_length=100)
-    release_date = models.DateField()
-    minutes = models.IntegerField()
-    podcast = models.ForeignKey('Podcast', on_delete=models.CASCADE)
+    description = models.CharField(max_length=1000, blank=True, null=True)
+    release_date = models.CharField(max_length=50, null=True, blank=True)
+    minutes = models.IntegerField(null=True, blank=True)
+    podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
     audio_link = models.CharField(max_length=200)
 
+    def __str__(self):
+        return str(self.id)
+
+
+class LikedPodcast(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
+    # liked = models.BooleanField
+
+    def __str__(self):
+        return "User: {} likes episode:{}".format(self.user.username, self.episode.title)
+
+class Follower(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
+
+
+    def __str__(self):
+        return "{}: {} is following {}".format(self.id, self.user.username, self.following.username)
