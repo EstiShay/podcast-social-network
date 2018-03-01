@@ -3,6 +3,12 @@
 
 {% block content %}
 
-<h1>Hello world</h1>
+<h1>{{ user }}</h1>
+<h3>{{ user.first_name}} {{user.last_name}}</h3>
+
+<p>Bio: {{user.bio}}</p>
+
+<h2>Subscriptions</h2>
+
 
 {% endblock %}
