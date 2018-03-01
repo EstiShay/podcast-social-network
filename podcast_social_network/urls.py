@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'episodedisplay/', podcast_views.episodeDisplay, name='episodedisplay'),
     url(r'addtolikes/', podcast_views.addToLikes, name='addtolikes'),
     url(r'newsfeed/', podcast_views.newsFeed, name='newsfeed'),
+    url(r'userprofile/', podcast_views.userProfile, name='userprofile'),
 
 ]

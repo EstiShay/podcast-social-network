@@ -105,3 +105,5 @@ def newsFeed(request):
 def newsFeedEpisodeBuilder(current_user):
     return
 
+def userProfile(request):
+    return render(request, 'podcast/userprofile.html', {})
