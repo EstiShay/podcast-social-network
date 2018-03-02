@@ -765,7 +765,7 @@ function submitPodcastSearch(e) {
             console.log("fail")
         }
     });
-})
+}
 ;
 
 function clickCoverImage(xml_link, collection_id, div_id) {

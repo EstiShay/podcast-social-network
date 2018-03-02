@@ -112,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="749" column="31" lean-forward="false" selection-start-line="749" selection-start-column="31" selection-end-line="749" selection-end-column="31" />
+            <state relative-caret-position="440">
+              <caret line="767" column="1" lean-forward="true" selection-start-line="767" selection-start-column="1" selection-end-line="767" selection-end-column="1" />
               <folding>
                 <element signature="e#689#2658#0" expanded="false" />
                 <element signature="e#2668#4781#0" expanded="false" />
@@ -144,7 +144,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/search.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
@@ -907,10 +907,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/podcast_social_network/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="66" lean-forward="false" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="749" column="31" lean-forward="false" selection-start-line="749" selection-start-column="31" selection-end-line="749" selection-end-column="31" />
+        <state relative-caret-position="440">
+          <caret line="767" column="1" lean-forward="true" selection-start-line="767" selection-start-column="1" selection-end-line="767" selection-end-column="1" />
           <folding>
             <element signature="e#689#2658#0" expanded="false" />
             <element signature="e#2668#4781#0" expanded="false" />
@@ -934,22 +950,6 @@
             <element signature="e#39283#41198#0" expanded="false" />
             <element signature="e#41208#43209#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/podcast_social_network/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="34" lean-forward="true" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="66" lean-forward="false" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
