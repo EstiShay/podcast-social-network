@@ -1,0 +1,23 @@
+
+{% block content %}
+    {% autoescape off %}
+        {% for i in another_episodes_list %}
+            <div class="episode-seperator">
+                <a href="/episode/{{ i.slug }}"> <h2>{{ i.title }}</h2></a>
+            <audio controls src="{{ i.audio_link }}"></audio>
+                <h2>testa {{ i.title }}</h2>
+                <h2>testb {{ i.slug }}</h2>
+            {{ i.description }}<br>
+            {{ i.pub_date }}<br>
+            <br>
+                <button class="like-button" onclick="addToLikes('{{ i.title }}')">TELL THE WORLD YOU LIKE IT</button>
+            </div>
+
+            <br>
+        {% endfor %}
+    {% endautoescape %}
+
+
+
+
+{% endblock %}
