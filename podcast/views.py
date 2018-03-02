@@ -101,6 +101,7 @@ def addToLikes(request):
 
 def newsFeed(request):
     user = request.user
+
     following_list_objects = Follower.objects.filter(user=user)
     following_list_users = []
     for i in following_list_objects:
@@ -112,3 +113,9 @@ def newsFeed(request):
                                                      "following_list_objects": following_list_objects,
                                                      "following_list_users": following_list_users,
                                                      })
+
+def viewProfile(request, username):
+    display_user = User.objects.get(username=username)
+    display_user_id = display_user.id
+    display_user_likes = LikedPodcast.objects.filter(user=display_user)
+    return render(request, 'podcast/userprofile.html', {"display_user": display_user, "user_likes": display_user_likes})
