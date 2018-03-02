@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 
@@ -21,6 +22,12 @@ class Podcast(models.Model):
     small_art = models.CharField(max_length=250)
     large_art = models.CharField(max_length=250)
     rss_feed_link = models.CharField(max_length=250)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super(Podcast, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -33,9 +40,15 @@ class Episode(models.Model):
     minutes = models.IntegerField(null=True, blank=True)
     podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
     audio_link = models.CharField(max_length=200)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super(Episode, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.id)
+        return self.title
 
 
 class LikedPodcast(models.Model):

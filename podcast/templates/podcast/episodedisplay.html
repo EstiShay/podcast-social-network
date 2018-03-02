@@ -1,19 +1,18 @@
 
 {% block content %}
     {% autoescape off %}
-        {% for i in episodes_list %}
+        {% for i in another_episodes_list %}
             <div class="episode-seperator">
-            <h3>Title</h3>
-            {{ i.title }}<br>
-            <h3>Audio Link</h3>
+                <a href="/episode/{{ i.slug }}"> <h2>{{ i.title }}</h2></a>
             <audio controls src="{{ i.audio_link }}"></audio>
-            <h3>Description</h3>
+                <h2>testa {{ i.title }}</h2>
+                <h2>testb {{ i.slug }}</h2>
             {{ i.description }}<br>
-            <h3>Publishing Date</h3>
             {{ i.pub_date }}<br>
             <br>
                 <button class="like-button" onclick="addToLikes('{{ i.title }}')">TELL THE WORLD YOU LIKE IT</button>
             </div>
+
             <br>
         {% endfor %}
     {% endautoescape %}
