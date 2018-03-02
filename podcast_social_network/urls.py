@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'episodedisplay/', podcast_views.episodeDisplay, name='episodedisplay'),
     url(r'addtolikes/', podcast_views.addToLikes, name='addtolikes'),
     url(r'newsfeed/', podcast_views.newsFeed, name='newsfeed'),
+    url(r'^user/(?P<username>[a-zA-Z0-9]+)$', podcast_views.viewProfile, name='viewprofile'),
 
 ]
