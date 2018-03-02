@@ -108,5 +108,5 @@ def newsFeedEpisodeBuilder(current_user):
 def viewProfile(request, username):
     display_user = User.objects.get(username=username)
     display_user_id = display_user.id
-    display_user_likes = LikedPodcast.objects.filter(user_id=display_user_id)
+    display_user_likes = LikedPodcast.objects.filter(user=display_user)
     return render(request, 'podcast/userprofile.html', {"display_user": display_user, "user_likes": display_user_likes})
