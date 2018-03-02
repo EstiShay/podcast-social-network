@@ -31,10 +31,13 @@ def searchPage(request):
     return render(request, 'podcast/search.html', {})
 
 
+def episodePageDisplay(request, slug):
+    episode = Episode.objects.get(slug=slug)
+    return render(request, 'podcast/episode.html', {"episode": episode})
+
 def json_parser(obj):
     results = obj['results']
     return results
-
 
 def searchResultsDisplay(request):
     search_term = request.POST.get('searchParam')
@@ -45,7 +48,6 @@ def searchResultsDisplay(request):
     addPodcastToModel(api_call_results)
     return render(request, 'podcast/searchresultsdisplay.html', {"search_result": api_call_results,
                                                                  })
-
 
 def addPodcastToModel(call_list):
     for i in call_list:
@@ -61,20 +63,21 @@ def addPodcastToModel(call_list):
                 rss_feed_link=i['feedUrl']
             )
 
-
 def episodeDisplay(request):
     rss_feed = request.POST.get('rss_feed')
     collection_id = request.POST.get('collection_id')
     episodes = xmlToJson(rss_feed)
     episodes_list = UrlFinder(episodes)
     addEpisodeToModel(episodes_list, collection_id)
+    podcast_of_choice = Podcast.objects.get(collection_id=collection_id)
+    another_episodes_list = Episode.objects.filter(podcast=podcast_of_choice)
     return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
+                                                           'another_episodes_list': another_episodes_list
                                                            })
-
 
 def addEpisodeToModel(episode_list, collection_id):
     podcast = Podcast.objects.get(collection_id=collection_id)
-    for i in episode_list:
+    for i in episode_list[:5]:
         if Episode.objects.filter(title=i['title']):
             return
         else:
@@ -86,7 +89,6 @@ def addEpisodeToModel(episode_list, collection_id):
                 audio_link=i['audio_link']
             )
 
-
 def addToLikes(request):
     user = request.user
     episode_name = request.POST.get('episode_name')
@@ -96,7 +98,6 @@ def addToLikes(request):
                                 )
     # return render(request, 'podcast/searchresultdisplay.html', {})
     return
-
 
 def newsFeed(request):
     user = request.user

@@ -5,7 +5,7 @@
     <div id="newsfeed">
         {% for i in liked_episodes %}
             <div class="newsfeed-liked-episode">
-                <strong>{{ i.user }}</strong> RECOMMENDS {{ i.episode.title }} from {{ i.episode.podcast }}<br>
+                <strong>{{ i.user }}</strong> RECOMMENDS <a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a> from {{ i.episode.podcast }}<br>
             </div>
             <br>
         {% endfor %}
