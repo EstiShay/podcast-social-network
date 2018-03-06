@@ -34,7 +34,9 @@ def searchPage(request):
 
 def episodePageDisplay(request, slug):
     episode = Episode.objects.get(slug=slug)
-    return render(request, 'podcast/episode.html', {"episode": episode})
+    recommending_users = LikedPodcast.objects.filter(episode=episode)
+    return render(request, 'podcast/episode.html', {"episode": episode,
+                                                    "recommending_users": recommending_users})
 
 
 def json_parser(obj):
@@ -104,7 +106,7 @@ def addToLikes(request):
                                 episode=episode,
                                 )
     # return render(request, 'podcast/searchresultdisplay.html', {})
-    return
+    return HttpResponse('added')
 
 
 def newsFeed(request):
@@ -136,14 +138,12 @@ def viewProfile(request, username):
                                                         "followers": followers,
                                                         "followed_by_list":followed_by_list,
                                                         "current_user_page": current_user_page
-
                                                         })
 
 
 def browseUsers(request):
     users = User.objects.exclude(id=request.user.id)
     return render(request, 'podcast/browseusers.html', {"users": users
-
                                                         })
 
 def followUser(request):
@@ -156,3 +156,15 @@ def followUser(request):
     else:
         Follower.objects.create(user=user, following=following)
     return HttpResponse('string')
+
+def unFollowUser(request):
+    user_username = request.POST.get('user')
+    user = User.objects.get(username=user_username)
+    following_username = request.POST.get('following')
+    following = User.objects.get(username=following_username)
+    if Follower.objects.get(user=user, following=following):
+        Follower.objects.get(user=user, following=following).delete()
+    else:
+        pass
+    return HttpResponse('deleted following')
+

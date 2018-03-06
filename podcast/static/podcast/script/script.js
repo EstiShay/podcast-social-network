@@ -749,7 +749,10 @@ $('#podcast-search-form').focus();
 
 function submitPodcastSearch(e) {
     e.preventDefault();
-    const searchString = $('#input-search-field').val();
+    const searchString = $('#input-search-field').val().toLowerCase();
+    console.log(searchString);
+    // const searchStringNoSPace = searchString.split(' ').join('+');
+    // console.log(searchStringNoSPace)
     $.ajax({
         // type: 'GET',
         type: 'POST',
@@ -820,16 +823,31 @@ function followUser(user, following) {
             user: user,
             following: following,
             csrfmiddlewaretoken: csrftoken
-        },
-        success: function (response) {
+        }, success: function (response) {
             console.log('success')
-        },
-        error: function (response) {
+        }, error: function (response) {
             console.log('fail')
-
         }
     })
+}
 
+function unFollowUser(user, following) {
+    event.preventDefault();
+    console.log(user);
+    console.log(following)
+    $.ajax({
+        type: "POST",
+        url: '/unfollowuser/',
+        data: {
+            user: user,
+            following: following,
+            csrfmiddlewaretoken: csrftoken
+        }, success: function (response) {
+            console.log('successsssss')
+        }, error: function (response) {
+            console.log('success')
+        }
+    })
 }
 
 
