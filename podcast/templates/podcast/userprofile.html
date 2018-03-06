@@ -8,13 +8,26 @@
 
 <p>Bio: {{ display_user.bio }}</p>
 
+{% if current_user_page %}
+    
+{% else %}
     <button id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">Follow {{ display_user.username }}</button>
-
-<h2>Following these Users:</h2>
+{% endif %}
+<h2><h1>Following</h1> these Users:</h2>
 <div id="user-following">
     {% for i in followers %}
         <p><a href="/user/{{ i.following.username }}">{{ i.following.username }}</p></a>
     {% endfor %}
+</div>
+
+<h2><h1>Followed</h1> by these Users:</h2>
+<div id="user-followed-by">
+{% for i in followed_by_list %}
+{#    {{ followed_by_list }}#}
+    <p><a href="/user/{{ i.user.username }}">{{ i.user }}</a></p>
+    <br>
+
+{% endfor %}
 </div>
 
 {#     <a href="/user/{{ i.username}}">{{ i.username }}</a>#}

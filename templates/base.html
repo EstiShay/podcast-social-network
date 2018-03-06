@@ -12,7 +12,7 @@
 <div class="navbar">
     Navbar {{ user }} <br>
     <a href="/logout/">Logout</a>
-    <a href="/">Home</a>
+    <a href="/user/{{ request.user.username }}">Home</a>
     <a href="/newsfeed/">Newsfeed</a>
     <a href="/browseusers">Browse Users</a>
     <a href="/search/">Podcast Search</a>

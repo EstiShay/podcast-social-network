@@ -126,9 +126,16 @@ def viewProfile(request, username):
     display_user = User.objects.get(username=username)
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
     followers = Follower.objects.filter(user=display_user)
+    followed_by_list = Follower.objects.filter(following=display_user)
+    if request.user.username == display_user.username:
+        current_user_page = True
+    else:
+        current_user_page = False
     return render(request, 'podcast/userprofile.html', {"display_user": display_user,
                                                         "user_likes": display_user_likes,
-                                                        "followers": followers
+                                                        "followers": followers,
+                                                        "followed_by_list":followed_by_list,
+                                                        "current_user_page": current_user_page
 
                                                         })
 
@@ -144,5 +151,8 @@ def followUser(request):
     user = User.objects.get(username=user_username)
     following_username = request.POST.get('following')
     following = User.objects.get(username=following_username)
-    Follower.objects.create(user=user, following=following)
+    if Follower.objects.get(user=user, following=following):
+        pass
+    else:
+        Follower.objects.create(user=user, following=following)
     return HttpResponse('string')
