@@ -811,6 +811,27 @@ function addToLikes(name) {
     )
 }
 
+function followUser(user, following) {
+    event.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: '/followuser/',
+        data: {
+            user: user,
+            following: following,
+            csrfmiddlewaretoken: csrftoken
+        },
+        success: function (response) {
+            console.log('success')
+        },
+        error: function (response) {
+            console.log('fail')
+
+        }
+    })
+
+}
+
 
 
 

@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'search/', podcast_views.searchPage, name='searchpage'),
     url(r'browseusers/', podcast_views.browseUsers, name='browseusers'),
+    url(r'followuser/', podcast_views.followUser, name='followuser'),
     url(r'episode/(?P<slug>[-\w]+)', podcast_views.episodePageDisplay, name='searchpage'),
     url(r'searchresultsdisplay/', podcast_views.searchResultsDisplay, name='searchresultsdisplay'),
     url(r'episodedisplay/', podcast_views.episodeDisplay, name='episodedisplay'),

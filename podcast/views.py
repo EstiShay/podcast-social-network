@@ -2,6 +2,7 @@ import urllib.request
 import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
+from django.http import HttpResponse
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -108,7 +109,6 @@ def addToLikes(request):
 
 def newsFeed(request):
     user = request.user
-
     following_list_objects = Follower.objects.filter(user=user)
     following_list_users = []
     for i in following_list_objects:
@@ -124,9 +124,13 @@ def newsFeed(request):
 
 def viewProfile(request, username):
     display_user = User.objects.get(username=username)
-    display_user_id = display_user.id
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
-    return render(request, 'podcast/userprofile.html', {"display_user": display_user, "user_likes": display_user_likes})
+    followers = Follower.objects.filter(user=display_user)
+    return render(request, 'podcast/userprofile.html', {"display_user": display_user,
+                                                        "user_likes": display_user_likes,
+                                                        "followers": followers
+
+                                                        })
 
 
 def browseUsers(request):
@@ -134,3 +138,11 @@ def browseUsers(request):
     return render(request, 'podcast/browseusers.html', {"users": users
 
                                                         })
+
+def followUser(request):
+    user_username = request.POST.get('user')
+    user = User.objects.get(username=user_username)
+    following_username = request.POST.get('following')
+    following = User.objects.get(username=following_username)
+    Follower.objects.create(user=user, following=following)
+    return HttpResponse('string')
