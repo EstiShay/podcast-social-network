@@ -35,9 +35,11 @@ def episodePageDisplay(request, slug):
     episode = Episode.objects.get(slug=slug)
     return render(request, 'podcast/episode.html', {"episode": episode})
 
+
 def json_parser(obj):
     results = obj['results']
     return results
+
 
 def searchResultsDisplay(request):
     search_term = request.POST.get('searchParam')
@@ -48,6 +50,7 @@ def searchResultsDisplay(request):
     addPodcastToModel(api_call_results)
     return render(request, 'podcast/searchresultsdisplay.html', {"search_result": api_call_results,
                                                                  })
+
 
 def addPodcastToModel(call_list):
     for i in call_list:
@@ -63,6 +66,7 @@ def addPodcastToModel(call_list):
                 rss_feed_link=i['feedUrl']
             )
 
+
 def episodeDisplay(request):
     rss_feed = request.POST.get('rss_feed')
     collection_id = request.POST.get('collection_id')
@@ -74,6 +78,7 @@ def episodeDisplay(request):
     return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
                                                            'another_episodes_list': another_episodes_list
                                                            })
+
 
 def addEpisodeToModel(episode_list, collection_id):
     podcast = Podcast.objects.get(collection_id=collection_id)
@@ -89,6 +94,7 @@ def addEpisodeToModel(episode_list, collection_id):
                 audio_link=i['audio_link']
             )
 
+
 def addToLikes(request):
     user = request.user
     episode_name = request.POST.get('episode_name')
@@ -98,6 +104,7 @@ def addToLikes(request):
                                 )
     # return render(request, 'podcast/searchresultdisplay.html', {})
     return
+
 
 def newsFeed(request):
     user = request.user
@@ -114,8 +121,16 @@ def newsFeed(request):
                                                      "following_list_users": following_list_users,
                                                      })
 
+
 def viewProfile(request, username):
     display_user = User.objects.get(username=username)
     display_user_id = display_user.id
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
     return render(request, 'podcast/userprofile.html', {"display_user": display_user, "user_likes": display_user_likes})
+
+
+def browseUsers(request):
+    users = User.objects.exclude(id=request.user.id)
+    return render(request, 'podcast/browseusers.html', {"users": users
+
+                                                        })
