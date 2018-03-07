@@ -827,7 +827,7 @@ function followUser(user, following) {
             following: following,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            console.log('success')
+            // console.log('success')
             document.location.reload()
         }, error: function (response) {
             console.log('fail')
@@ -848,8 +848,8 @@ function unFollowUser(user, following) {
             following: following,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            console.log(response)
-            // document.location.reload()
+            // console.log("dsadfd   " + response);
+            document.location.reload()
         }, error: function (response) {
             console.log('success')
         }

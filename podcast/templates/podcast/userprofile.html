@@ -11,18 +11,18 @@
 
 
     {% if current_user_page %}
-        {#        Checks to see if the User page being viewed is the same as the authenticated user#}
+        {# If viewing own page, no follow/unfollow button#}
     {% else %}
+{#        If viewing others' page, follow button#}
         {% if already_following %}
-            {#            Checks to see if the user being viewed is already being followed or not#}
-            <button id="un-follow-user"
-                onclick="unFollowUser('{{ request.user.username }}', '{{ display_user.username }}')">
-            Unfollow {{ display_user.username }}</button>
+            {#  If Following, add UNFOLLOW button#}
+            <button id="un-follow-user" onclick="unFollowUser('{{ request.user.username }}',
+                    '{{ display_user.username }}')">Unfollow {{ display_user.username }}</button>
         {% else %}
+        {#  If Not Following, add FOLLOW button#}
             <button id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">
             Follow {{ display_user.username }}</button>
         {% endif %}
-
     {% endif %}
 
 
