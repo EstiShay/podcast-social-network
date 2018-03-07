@@ -133,11 +133,16 @@ def viewProfile(request, username):
         current_user_page = True
     else:
         current_user_page = False
+    if Follower.objects.filter(user=request.user, following=display_user):
+        already_following = True
+    else:
+        already_following = False
     return render(request, 'podcast/userprofile.html', {"display_user": display_user,
                                                         "user_likes": display_user_likes,
                                                         "followers": followers,
                                                         "followed_by_list":followed_by_list,
-                                                        "current_user_page": current_user_page
+                                                        "current_user_page": current_user_page,
+                                                        "already_following": already_following
                                                         })
 
 
@@ -147,24 +152,23 @@ def browseUsers(request):
                                                         })
 
 def followUser(request):
-    user_username = request.POST.get('user')
-    user = User.objects.get(username=user_username)
-    following_username = request.POST.get('following')
-    following = User.objects.get(username=following_username)
-    if Follower.objects.get(user=user, following=following):
-        pass
-    else:
-        Follower.objects.create(user=user, following=following)
-    return HttpResponse('string')
+    # user_username = request.POST.get('user')
+    # user = User.objects.get(username=user_username)
+    # following_username = request.POST.get('following')
+    # following = User.objects.get(username=following_username)
+    # if Follower.objects.filter(user=user, following=following):
+    #     pass
+    # else:
+    #     Follower.objects.create(user=user, following=following)
+    return HttpResponse('stringzzzsssee')
 
 def unFollowUser(request):
     user_username = request.POST.get('user')
     user = User.objects.get(username=user_username)
     following_username = request.POST.get('following')
     following = User.objects.get(username=following_username)
-    if Follower.objects.get(user=user, following=following):
-        Follower.objects.get(user=user, following=following).delete()
-    else:
-        pass
-    return HttpResponse('deleted following')
+    # if Follower.objects.filter(user=user, following=following):
+    b = Follower.objects.filter(user=user, following=following)
+    # b.delete()
+    return HttpResponse(b)
 

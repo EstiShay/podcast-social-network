@@ -3,17 +3,26 @@
 
 {% block content %}
 
-
+    Already following: {{ already_following }}
     <h3>{{ display_user.first_name }} {{ display_user.last_name }}</h3>
 
-    <p>Bio: {{ display_user.bio }}</p>
+{#    <p>Bio: {{ display_user.bio }}</p>#}
 
-    {{ current_user_page }}
+
+
     {% if current_user_page %}
-        <button id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">
-            Follow {{ display_user.username }}</button>
+        {#        Checks to see if the User page being viewed is the same as the authenticated user#}
     {% else %}
-        <button id="un-follow-user" onclick="unFollowUser('{{ request.user.username }}', '{{ display_user.username }}')">Unfollow {{ display_user.username }}</button>
+        {% if already_following %}
+            {#            Checks to see if the user being viewed is already being followed or not#}
+            <button id="un-follow-user"
+                onclick="unFollowUser('{{ request.user.username }}', '{{ display_user.username }}')">
+            Unfollow {{ display_user.username }}</button>
+        {% else %}
+            <button id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">
+            Follow {{ display_user.username }}</button>
+        {% endif %}
+
     {% endif %}
 
 
