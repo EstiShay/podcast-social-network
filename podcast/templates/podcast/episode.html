@@ -8,7 +8,8 @@
     <br>
     {{ episode.description }}<br>
 
-    <audio controls src="{{ episode.audio_link }}"></audio>
+    <audio controls src="{{ episode.audio_link }}"></audio><br>
+    <button class="like-button" onclick="addToLikes('{{ episode.title }}')">TELL THE WORLD YOU LIKE IT</button>
 
     <h3>Recommended by:</h3>
 
