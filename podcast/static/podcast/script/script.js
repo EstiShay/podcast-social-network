@@ -747,7 +747,7 @@ search_return = {
 $('#podcast-search-form').focus();
 
 
-$('#podcast-search-form').submit(function (e) {
+function submitPodcastSearch(e) {
     e.preventDefault();
     const searchString = $('#input-search-field').val();
     $.ajax({
@@ -765,7 +765,7 @@ $('#podcast-search-form').submit(function (e) {
             console.log("fail")
         }
     });
-})
+}
 ;
 
 function clickCoverImage(xml_link, collection_id, div_id) {

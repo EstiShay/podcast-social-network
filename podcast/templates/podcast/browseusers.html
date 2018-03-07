@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% for i in users %}
+
+        <div class="newsfeed-liked-episode">
+                User page here: <a href="/user/{{ i.username}}">{{ i.username }}</a> <br>
+            </div>
+
+    {% endfor %}
+
+
+{% endblock %}
