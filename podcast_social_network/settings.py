@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = '92k*drur6*-cu(^5jc5p1075axjxyp-ix-h=sk*@8h6=lqf4*u'
 
 # HEROKU SETTINGS
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'podcast_social_network.wsgi.application'
 # }
 
 # HEROKU SETTINGS
-DATABASES = {'default': dj_database_url.config(default=os.environ["HEROKU_POSTGRESQL_BROWN_URL"])}
+# DATABASES = {'default': dj_database_url.config(default=os.environ["HEROKU_POSTGRESQL_BROWN_URL"])}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -145,3 +145,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+try:
+    from podcast_social_network.development_settings import *
+except ImportError:
+    SECRET_KEY = config('SECRET_KEY')
+    DATABASES = {'default': dj_database_url.config(default=os.environ["HEROKU_POSTGRESQL_BROWN_URL"])}
