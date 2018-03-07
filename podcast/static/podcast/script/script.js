@@ -749,13 +749,16 @@ $('#podcast-search-form').focus();
 
 function submitPodcastSearch(e) {
     e.preventDefault();
-    const searchString = $('#input-search-field').val();
+    const searchString = $('#input-search-field').val().toLowerCase();
+    console.log(searchString);
+    const searchStringNoSPace = searchString.split(' ').join('+');
+    console.log(searchStringNoSPace)
     $.ajax({
         // type: 'GET',
         type: 'POST',
         url: /searchresultsdisplay/,
         data: {
-            searchParam: searchString,
+            searchParam: searchStringNoSPace,
             csrfmiddlewaretoken: csrftoken,
         },
         success: function (response) {
@@ -809,6 +812,48 @@ function addToLikes(name) {
             }
         }
     )
+}
+
+function followUser(user, following) {
+    event.preventDefault();
+    console.log('FOLLOW');
+    console.log(user);
+    console.log(following)
+    $.ajax({
+        type: "POST",
+        url: '/followuser/',
+        data: {
+            user: user,
+            following: following,
+            csrfmiddlewaretoken: csrftoken
+        }, success: function (response) {
+            // console.log('success')
+            document.location.reload()
+        }, error: function (response) {
+            console.log('fail')
+        }
+    })
+}
+
+function unFollowUser(user, following) {
+    event.preventDefault();
+    console.log('unfollow');
+    console.log(user);
+    console.log(following);
+    $.ajax({
+        type: "POST",
+        url: '/unfollowuser/',
+        data: {
+            user: user,
+            following: following,
+            csrfmiddlewaretoken: csrftoken
+        }, success: function (response) {
+            // console.log("dsadfd   " + response);
+            document.location.reload()
+        }, error: function (response) {
+            console.log('success')
+        }
+    })
 }
 
 

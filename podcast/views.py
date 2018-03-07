@@ -2,6 +2,7 @@ import urllib.request
 import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
+from django.http import HttpResponse
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -33,7 +34,9 @@ def searchPage(request):
 
 def episodePageDisplay(request, slug):
     episode = Episode.objects.get(slug=slug)
-    return render(request, 'podcast/episode.html', {"episode": episode})
+    recommending_users = LikedPodcast.objects.filter(episode=episode)
+    return render(request, 'podcast/episode.html', {"episode": episode,
+                                                    "recommending_users": recommending_users})
 
 
 def json_parser(obj):
@@ -103,12 +106,11 @@ def addToLikes(request):
                                 episode=episode,
                                 )
     # return render(request, 'podcast/searchresultdisplay.html', {})
-    return
+    return HttpResponse('added')
 
 
 def newsFeed(request):
     user = request.user
-
     following_list_objects = Follower.objects.filter(user=user)
     following_list_users = []
     for i in following_list_objects:
@@ -121,16 +123,57 @@ def newsFeed(request):
                                                      "following_list_users": following_list_users,
                                                      })
 
+def alreadyFollowing(user, following):
+    if Follower.objects.filter(user=user, following=following):
+        return True
+    else:
+        return False
 
 def viewProfile(request, username):
     display_user = User.objects.get(username=username)
-    display_user_id = display_user.id
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
-    return render(request, 'podcast/userprofile.html', {"display_user": display_user, "user_likes": display_user_likes})
+    followers = Follower.objects.filter(user=display_user)
+    followed_by_list = Follower.objects.filter(following=display_user)
+    if request.user.username == display_user.username:
+        current_user_page = True
+    else:
+        current_user_page = False
+    if Follower.objects.filter(user=request.user, following=display_user):
+        already_following = True
+    else:
+        already_following = False
+    # already_following = alreadyFollowing(request.user, display_user)
+    return render(request, 'podcast/userprofile.html', {"display_user": display_user,
+                                                        "user_likes": display_user_likes,
+                                                        "followers": followers,
+                                                        "followed_by_list":followed_by_list,
+                                                        "current_user_page": current_user_page,
+                                                        "already_following": already_following
+                                                        })
 
 
 def browseUsers(request):
     users = User.objects.exclude(id=request.user.id)
     return render(request, 'podcast/browseusers.html', {"users": users
-
                                                         })
+
+def followUser(request):
+    user_username = request.POST.get('user')
+    user = User.objects.get(username=user_username)
+    following_username = request.POST.get('following')
+    following = User.objects.get(username=following_username)
+    if Follower.objects.filter(user=user, following=following):
+        pass
+    else:
+        Follower.objects.create(user=user, following=following)
+    return HttpResponse("a")
+
+def unFollowUser(request):
+    user_username = request.POST.get('user')
+    user = User.objects.get(username=user_username)
+    following_username = request.POST.get('following')
+    following = User.objects.get(username=following_username)
+    b = Follower.objects.filter(user=user, following=following)
+    b.delete()
+    return HttpResponse("b")
+
