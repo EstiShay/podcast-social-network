@@ -751,14 +751,14 @@ function submitPodcastSearch(e) {
     e.preventDefault();
     const searchString = $('#input-search-field').val().toLowerCase();
     console.log(searchString);
-    // const searchStringNoSPace = searchString.split(' ').join('+');
-    // console.log(searchStringNoSPace)
+    const searchStringNoSPace = searchString.split(' ').join('+');
+    console.log(searchStringNoSPace)
     $.ajax({
         // type: 'GET',
         type: 'POST',
         url: /searchresultsdisplay/,
         data: {
-            searchParam: searchString,
+            searchParam: searchStringNoSPace,
             csrfmiddlewaretoken: csrftoken,
         },
         success: function (response) {

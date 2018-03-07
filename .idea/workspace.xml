@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cbaee92-99c8-41dd-8e83-03e82f998144" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/static/podcast/script/script.js" afterPath="$PROJECT_DIR$/podcast/static/podcast/script/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/templates/podcast/userprofile.html" afterPath="$PROJECT_DIR$/podcast/templates/podcast/userprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast/views.py" afterPath="$PROJECT_DIR$/podcast/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/podcast_social_network/urls.py" afterPath="$PROJECT_DIR$/podcast_social_network/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/podcast/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
+            <state relative-caret-position="2160">
               <caret line="144" column="70" lean-forward="false" selection-start-line="144" selection-start-column="70" selection-end-line="144" selection-end-column="70" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -116,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="830" column="26" lean-forward="true" selection-start-line="830" selection-start-column="26" selection-end-line="830" selection-end-column="26" />
+            <state relative-caret-position="239">
+              <caret line="760" column="44" lean-forward="false" selection-start-line="760" selection-start-column="44" selection-end-line="760" selection-end-column="44" />
               <folding>
                 <element signature="e#689#2658#0" expanded="false" />
                 <element signature="e#2668#4781#0" expanded="false" />
@@ -203,8 +199,8 @@
         <option value="$PROJECT_DIR$/podcast/models.py" />
         <option value="$PROJECT_DIR$/podcast_social_network/urls.py" />
         <option value="$PROJECT_DIR$/podcast/views.py" />
-        <option value="$PROJECT_DIR$/podcast/static/podcast/script/script.js" />
         <option value="$PROJECT_DIR$/podcast/templates/podcast/userprofile.html" />
+        <option value="$PROJECT_DIR$/podcast/static/podcast/script/script.js" />
       </list>
     </option>
   </component>
@@ -869,36 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="830" column="26" lean-forward="true" selection-start-line="830" selection-start-column="26" selection-end-line="830" selection-end-column="26" />
-          <folding>
-            <element signature="e#689#2658#0" expanded="false" />
-            <element signature="e#2668#4781#0" expanded="false" />
-            <element signature="e#4791#6905#0" expanded="false" />
-            <element signature="e#6915#8974#0" expanded="false" />
-            <element signature="e#8984#10904#0" expanded="false" />
-            <element signature="e#10914#12980#0" expanded="false" />
-            <element signature="e#12990#14907#0" expanded="false" />
-            <element signature="e#14917#17048#0" expanded="false" />
-            <element signature="e#17058#18965#0" expanded="false" />
-            <element signature="e#18975#21067#0" expanded="false" />
-            <element signature="e#21077#23052#0" expanded="false" />
-            <element signature="e#23062#24925#0" expanded="false" />
-            <element signature="e#24935#26954#0" expanded="false" />
-            <element signature="e#26964#29260#0" expanded="false" />
-            <element signature="e#29270#31405#0" expanded="false" />
-            <element signature="e#31415#33275#0" expanded="false" />
-            <element signature="e#33285#35174#0" expanded="false" />
-            <element signature="e#35184#37341#0" expanded="false" />
-            <element signature="e#37351#39273#0" expanded="false" />
-            <element signature="e#39283#41198#0" expanded="false" />
-            <element signature="e#41208#43209#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/podcast/templates/podcast/browseusers.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -925,10 +891,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/podcast/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
+        <state relative-caret-position="2160">
           <caret line="144" column="70" lean-forward="false" selection-start-line="144" selection-start-column="70" selection-end-line="144" selection-end-column="70" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/podcast/static/podcast/script/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="760" column="44" lean-forward="false" selection-start-line="760" selection-start-column="44" selection-end-line="760" selection-end-column="44" />
+          <folding>
+            <element signature="e#689#2658#0" expanded="false" />
+            <element signature="e#2668#4781#0" expanded="false" />
+            <element signature="e#4791#6905#0" expanded="false" />
+            <element signature="e#6915#8974#0" expanded="false" />
+            <element signature="e#8984#10904#0" expanded="false" />
+            <element signature="e#10914#12980#0" expanded="false" />
+            <element signature="e#12990#14907#0" expanded="false" />
+            <element signature="e#14917#17048#0" expanded="false" />
+            <element signature="e#17058#18965#0" expanded="false" />
+            <element signature="e#18975#21067#0" expanded="false" />
+            <element signature="e#21077#23052#0" expanded="false" />
+            <element signature="e#23062#24925#0" expanded="false" />
+            <element signature="e#24935#26954#0" expanded="false" />
+            <element signature="e#26964#29260#0" expanded="false" />
+            <element signature="e#29270#31405#0" expanded="false" />
+            <element signature="e#31415#33275#0" expanded="false" />
+            <element signature="e#33285#35174#0" expanded="false" />
+            <element signature="e#35184#37341#0" expanded="false" />
+            <element signature="e#37351#39273#0" expanded="false" />
+            <element signature="e#39283#41198#0" expanded="false" />
+            <element signature="e#41208#43209#0" expanded="false" />
           </folding>
         </state>
       </provider>
