@@ -26,7 +26,10 @@ class Podcast(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.title)
+            if len(self.title) > 50:
+                self.slug = slugify(self.title[:48])
+            else:
+                self.slug = slugify(self.title)
         super(Podcast, self).save(*args, **kwargs)
 
     def __str__(self):
