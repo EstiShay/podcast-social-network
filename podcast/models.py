@@ -54,7 +54,6 @@ class Episode(models.Model):
 class LikedPodcast(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
-    # liked = models.BooleanField
 
     def __str__(self):
         return "User: {} likes episode:{}".format(self.user.username, self.episode.title)
@@ -62,7 +61,6 @@ class LikedPodcast(models.Model):
 class Follower(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
-
 
     def __str__(self):
         return "{}: {} is following {}".format(self.id, self.user.username, self.following.username)

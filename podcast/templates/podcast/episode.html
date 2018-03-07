@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <img src="{{ episode.podcast.large_art }}" alt="episode image">
+    <br>
+    <br>
     {{ episode.title }}<br>
-    
-    <audio controls src="{{ episode.audio_link }}"></audio>
+    <br>
+    {{ episode.description }}<br>
+
+    <audio controls src="{{ episode.audio_link }}"></audio><br>
+    <button class="like-button" onclick="addToLikes('{{ episode.title }}')">TELL THE WORLD YOU LIKE IT</button>
+
+    <h3>Recommended by:</h3>
+
+    {% for i in recommending_users %}
+       <p><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></p>
+
+    {% endfor %}
 
 
 

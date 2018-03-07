@@ -3,20 +3,56 @@
 
 {% block content %}
 
-<h1>{{ display_user }}</h1>
-<h3>{{ display_user.first_name}} {{display_user.last_name}}</h3>
+    Already following: {{ already_following }}
+    <h3>{{ display_user.first_name }} {{ display_user.last_name }}</h3>
 
-<p>Bio: {{display_user.bio}}</p>
+{#    <p>Bio: {{ display_user.bio }}</p>#}
 
 
-<h2>Recommends these episodes</h2>
-<div id="user_likes">
-    <p>
-    {% for i in user_likes %}
-        {{ i.episode.title }} from the {{ i.episode.podcast }} podcast<br>
-        <br>
-    </p>
-    {% endfor %}
-</div>
+
+    {% if current_user_page %}
+        {# If viewing own page, no follow/unfollow button#}
+    {% else %}
+{#        If viewing others' page, follow button#}
+        {% if already_following %}
+            {#  If Following, add UNFOLLOW button#}
+            <button id="un-follow-user" onclick="unFollowUser('{{ request.user.username }}',
+                    '{{ display_user.username }}')">Unfollow {{ display_user.username }}</button>
+        {% else %}
+        {#  If Not Following, add FOLLOW button#}
+            <button id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">
+            Follow {{ display_user.username }}</button>
+        {% endif %}
+    {% endif %}
+
+
+    <h2><h1>Following</h1> these Users:</h2>
+    <div id="user-following">
+        {% for i in followers %}
+            <p><a href="/user/{{ i.following.username }}">{{ i.following.username }}</p></a>
+        {% endfor %}
+    </div>
+
+    <h2><h1>Followed</h1> by these Users:</h2>
+    <div id="user-followed-by">
+        {% for i in followed_by_list %}
+            {#    {{ followed_by_list }}#}
+            <p><a href="/user/{{ i.user.username }}">{{ i.user }}</a></p>
+            <br>
+
+        {% endfor %}
+    </div>
+
+    {#     <a href="/user/{{ i.username}}">{{ i.username }}</a>#}
+
+    <h2>Recommends these episodes</h2>
+    <div id="user_likes">
+        <p>
+            {% for i in user_likes %}
+                <a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a><br>
+                <br>
+                </p>
+            {% endfor %}
+    </div>
 
 {% endblock %}
