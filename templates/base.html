@@ -8,15 +8,19 @@
     <title>Podcast Social Network</title>
     <link rel="stylesheet" href="{% static 'podcast/CSS/style.css' %}">
 </head>
-{% if request.user %}
+{% if request.user.is_authenticated %}
     <div class="navbar">
-        Navbar {{ user }} <br>
+        Welcome, {{ user }} <br>
         <a href="/logout/">Logout</a>
         <a href="/user/{{ request.user.username }}">Home</a>
         <a href="/newsfeed/">Newsfeed</a>
         <a href="/browseusers">Browse Users</a>
         <a href="/search/">Podcast Search</a>
         <a href="#">Settings</a>
+    </div>
+    {% else %}
+    <div class="navbar">
+        <a href="/">Home</a>
     </div>
 {% endif %}
 <body>

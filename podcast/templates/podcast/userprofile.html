@@ -3,17 +3,16 @@
 
 {% block content %}
 
-    Already following: {{ already_following }}
     <h3>{{ display_user.first_name }} {{ display_user.last_name }}</h3>
 
-{#    <p>Bio: {{ display_user.bio }}</p>#}
 
-
-
+{#    This section checks if #}
+{#    1) if you're viewing your own page; and if not#}
+{#    2) if you're already following this person#}
     {% if current_user_page %}
         {# If viewing own page, no follow/unfollow button#}
     {% else %}
-{#        If viewing others' page, follow button#}
+        {#  If viewing others' page, follow button#}
         {% if already_following %}
             {#  If Following, add UNFOLLOW button#}
             <button id="un-follow-user" onclick="unFollowUser('{{ request.user.username }}',
