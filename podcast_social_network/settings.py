@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'podcast.apps.PodcastConfig',
+    'widget_tweaks',
 
 ]
 

@@ -1,12 +1,57 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 
 {% block content %}
-<h3>New User Form</h3>
-        <form method="POST" class="new-user-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Sign Up</button>
-        </form>
 
+    {#    <form method="POST" class="new-user-form form-horizontal">{% csrf_token %}#}
+    {#        <div class="form-group">#}
+    {#            <label for="id_username" class="control-label col-sm-2">Username:</label>#}
+    {#            <div class="col-sm-10">#}
+    {#                {{ form.username }}#}
+    {#            </div>#}
+    {#            <br>#}
+    {#        </div>#}
+    {##}
+    {#        First Name: {{ form.first_name }}<br>#}
+    {#        Last Name: {{ form.last_name }}<br>#}
+    {#        Email: {{ form.email }}<br>#}
+    {#        Password: {{ form.password1 }}<br>#}
+    {#        Confirm Password: {{ form.password2 }}#}
+    {##}
+    {##}
+    {#            {{ form.as_p }}#}
+    {#        {% for hidden in form.hidden_fields %}#}
+    {#            {{ hidden }}#}
+    {#        {% endfor %}#}
+    {#    <div class="container-fluid">#}
+    {#        <h3>New User Form</h3>#}
+    {#        <form method="POST" class="form-horizontal">#}
+    {#            {% csrf_token %}#}
+    {#            {% render_field form.username class='form-control' placeholder=form.username.label %}#}
+    {#            {% render_field form.first_name class='form-control' placeholder=form.first_name.label %}#}
+    {#            {% render_field form.last_name class='form-control' placeholder=form.last_name.label %}#}
+    {#            {% render_field form.password1 class='form-control' placeholder='Password' %}#}
+    {#            {% render_field form.password2 class='form-control' placeholder="Confirm Password" %}#}
+    {#            {% render_field form.bio class='form-control' placeholder=form.bio.label %}#}
+    {##}
+    {#            <button type="submit" class="save btn btn-default">Sign Up</button>#}
+    {#        </form>#}
+    {#    </div>#}
+    <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+                    {{ field|add_class:'form-control' }}
+                    {% for error in field.errors %}
+                        <span class="help-block bg-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-default">Sign Up</button>
+        </form>
+    </div>
 
 {% endblock %}
