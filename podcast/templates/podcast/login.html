@@ -1,13 +1,29 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 
 {% block content %}
-    <h2>Login</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Log In</button>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {#        {% for field in form %}#}
+            {#            field:#}
+            {#            <div class="form-horizontal">{{ field }}#}
+            {#            </div>#}
+            {#        {% endfor %}#}
+
+            <div class="form-horizontal">
+                {{ form.as_p }}
+            </div>
+
+    <button type="button" class="btn btn-default">Log In</button>
     </form>
+    <div id='sign-up-form'>
+                <a href="/signup/">New User</a>
+
+            </div>
+    </div>
 
 
 

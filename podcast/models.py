@@ -4,10 +4,11 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import AbstractUser
 
 
+
 # Create your models here.
 
 class User(AbstractUser):
-    bio = models.TextField(max_length=144, null=True, blank=True)
+    bio = models.TextField(max_length=1440, null=True, blank=True)
 
 
 class Profile(models.Model):
@@ -16,17 +17,20 @@ class Profile(models.Model):
 
 
 class Podcast(models.Model):
-    title = models.CharField(max_length=250)
-    collection_id = models.CharField(max_length=250)
-    artist_name = models.CharField(max_length=250)
-    small_art = models.CharField(max_length=250)
-    large_art = models.CharField(max_length=250)
-    rss_feed_link = models.CharField(max_length=250)
-    slug = models.SlugField()
+    title = models.CharField(max_length=450)
+    collection_id = models.CharField(max_length=450)
+    artist_name = models.CharField(max_length=450)
+    small_art = models.CharField(max_length=450)
+    large_art = models.CharField(max_length=450)
+    rss_feed_link = models.CharField(max_length=450)
+    slug = models.SlugField(max_length=450)
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.title)
+            if len(self.title) > 50:
+                self.slug = slugify(self.title[:48])
+            else:
+                self.slug = slugify(self.title)
         super(Podcast, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -34,17 +38,20 @@ class Podcast(models.Model):
 
 
 class Episode(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=250)
     description = models.CharField(max_length=1000, blank=True, null=True)
-    release_date = models.CharField(max_length=50, null=True, blank=True)
+    release_date = models.CharField(max_length=100, null=True, blank=True)
     minutes = models.IntegerField(null=True, blank=True)
     podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
-    audio_link = models.CharField(max_length=200)
+    audio_link = models.CharField(max_length=400)
     slug = models.SlugField()
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.title)
+            if len(self.title) > 50:
+                self.slug = slugify(self.title[:48])
+            else:
+                self.slug = slugify(self.title)
         super(Episode, self).save(*args, **kwargs)
 
     def __str__(self):
