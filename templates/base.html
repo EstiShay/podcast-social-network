@@ -6,11 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Podcast Social Network</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static 'podcast/CSS/style.css' %}">
 </head>
-{% if request.user %}
+{% if request.user.is_authenticated %}
     <div class="navbar">
-        Navbar {{ user }} <br>
+        Welcome, {{ user }} <br>
         <a href="/logout/">Logout</a>
         <a href="/user/{{ request.user.username }}">Home</a>
         <a href="/newsfeed/">Newsfeed</a>
@@ -18,11 +21,21 @@
         <a href="/search/">Podcast Search</a>
         <a href="#">Settings</a>
     </div>
+{% else %}
+    <div class="navbar">
+        <a href="/">DADADA</a>
+    </div>
 {% endif %}
 <body>
 {% block content %}
 {% endblock %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
 <script src="{% static 'podcast/script/script.js' %}"></script>
 </body>
