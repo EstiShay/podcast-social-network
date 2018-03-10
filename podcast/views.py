@@ -35,8 +35,13 @@ def searchPage(request):
 def episodePageDisplay(request, slug):
     episode = Episode.objects.get(slug=slug)
     recommending_users = LikedPodcast.objects.filter(episode=episode)
+    if LikedPodcast.objects.filter(user=request.user, episode=episode):
+        already_liked = True
+    else:
+        already_liked = False
     return render(request, 'podcast/episode.html', {"episode": episode,
-                                                    "recommending_users": recommending_users})
+                                                    "recommending_users": recommending_users,
+                                                    "already_liked": already_liked})
 
 
 def json_parser(obj):
@@ -78,6 +83,7 @@ def episodeDisplay(request):
     addEpisodeToModel(episodes_list, collection_id)
     podcast_of_choice = Podcast.objects.get(collection_id=collection_id)
     another_episodes_list = Episode.objects.filter(podcast=podcast_of_choice)
+    #if LikedPodcast.objects.filter...
     return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
                                                            'another_episodes_list': another_episodes_list
                                                            })
@@ -108,6 +114,13 @@ def addToLikes(request):
     # return render(request, 'podcast/searchresultdisplay.html', {})
     return HttpResponse('added')
 
+def removeFromLikes(request):
+    user = request.user
+    title = request.POST.get('episode_name')
+    episode = Episode.objects.get(title=title)
+    ep = LikedPodcast.objects.filter(user=user, episode=episode)
+    ep.delete()
+    return HttpResponse('ep')
 
 def newsFeed(request):
     user = request.user
@@ -176,4 +189,3 @@ def unFollowUser(request):
     b = Follower.objects.filter(user=user, following=following)
     b.delete()
     return HttpResponse("b")
-
