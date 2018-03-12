@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 
-
-{% block content %}
-    <div id="newsfeed">
-        {% for i in liked_episodes %}
-            <div class="newsfeed-liked-episode">
-                <strong>{{ i.user }}</strong> RECOMMENDS <a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a> from {{ i.episode.podcast }}<br>
-            </div>
-            <br>
-        {% endfor %}
-
-
-    </div>
+{% block header %}
+    <h1>My NewsFeed</h1>
 {% endblock %}
+
+{% if liked_episodes %}
+
+    {% block content %}
+        <div class="row">
+            <div class="col-1">User</div>
+            <div class="col-2">Podcast</div>
+            <div class="col-9">Episode</div>
+        </div>
+        <div id="newsfeed">
+            {% for i in liked_episodes %}
+                <div class="row">
+                    <div class="col-1"><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></div>
+                    <div class="col-2"><img class="row-cover-art" src="{{ i.episode.podcast.small_art }}"
+                                            alt="podcast coverart"></div>
+                    <div class="col-9"><a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a></div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% else %}
+    <div class="row">
+        <h3>No recommendations... try following some users!</h3>
+    </div>
+{% endif %}
 
 

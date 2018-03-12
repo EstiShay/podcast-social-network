@@ -3,14 +3,45 @@ import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
 from django.http import HttpResponse
-
+import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, 'podcast/index.html', {})
+    if request.user.is_authenticated:
+        return render(request, 'podcast/newsfeed.html', {})
+    else:
+        return render(request, 'podcast/index.html', {})
+
+
+@login_required
+def searchPage(request):
+    return render(request, 'podcast/search.html', {})
+
+
+@login_required
+def newsFeed(request):
+    user = request.user
+    following_list_objects = Follower.objects.filter(user=user)
+    following_list_users = []
+    for i in following_list_objects:
+        following_list_users.append(i.following)
+    following_list_liked_episodes = LikedPodcast.objects.filter(user__in=following_list_users)
+    return render(request, 'podcast/newsfeed.html', {"liked_episodes": following_list_liked_episodes,
+                                                     "user": user,
+                                                     "following_list_objects": following_list_objects,
+                                                     "following_list_users": following_list_users,
+                                                     })
+
+
+@login_required
+def browseUsers(request):
+    users = User.objects.exclude(id=request.user.id)
+    return render(request, 'podcast/browseusers.html', {"users": users
+                                                        })
 
 
 def signup(request):
@@ -26,10 +57,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'podcast/signup.html', {"form": form})
-
-
-def searchPage(request):
-    return render(request, 'podcast/search.html', {})
 
 
 def episodePageDisplay(request, slug):
@@ -111,7 +138,6 @@ def addToLikes(request):
     LikedPodcast.objects.create(user=user,
                                 episode=episode,
                                 )
-    # return render(request, 'podcast/searchresultdisplay.html', {})
     return HttpResponse('added')
 
 def removeFromLikes(request):
@@ -122,26 +148,14 @@ def removeFromLikes(request):
     ep.delete()
     return HttpResponse('ep')
 
-def newsFeed(request):
-    user = request.user
-    following_list_objects = Follower.objects.filter(user=user)
-    following_list_users = []
-    for i in following_list_objects:
-        following_list_users.append(i.following)
-    following_list_liked_episodes = LikedPodcast.objects.filter(user__in=following_list_users)
-
-    return render(request, 'podcast/newsfeed.html', {"liked_episodes": following_list_liked_episodes,
-                                                     "user": user,
-                                                     "following_list_objects": following_list_objects,
-                                                     "following_list_users": following_list_users,
-                                                     })
-
 def alreadyFollowing(user, following):
     if Follower.objects.filter(user=user, following=following):
         return True
     else:
         return False
 
+
+@login_required
 def viewProfile(request, username):
     display_user = User.objects.get(username=username)
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
@@ -159,16 +173,11 @@ def viewProfile(request, username):
     return render(request, 'podcast/userprofile.html', {"display_user": display_user,
                                                         "user_likes": display_user_likes,
                                                         "followers": followers,
-                                                        "followed_by_list":followed_by_list,
+                                                        "followed_by_list": followed_by_list,
                                                         "current_user_page": current_user_page,
                                                         "already_following": already_following
                                                         })
 
-
-def browseUsers(request):
-    users = User.objects.exclude(id=request.user.id)
-    return render(request, 'podcast/browseusers.html', {"users": users
-                                                        })
 
 def followUser(request):
     user_username = request.POST.get('user')
@@ -180,6 +189,7 @@ def followUser(request):
     else:
         Follower.objects.create(user=user, following=following)
     return HttpResponse("a")
+
 
 def unFollowUser(request):
     user_username = request.POST.get('user')

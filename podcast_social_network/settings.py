@@ -21,7 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '92k*drur6*-cu(^5jc5p1075axjxyp-ix-h=sk*@8h6=lqf4*u'
+
+# LOCALSERVER SETTINGS
+# SECRET_KEY = '92k*drur6*-cu(^5jc5p1075axjxyp-ix-h=sk*@8h6=lqf4*u'
+
+# HEROKU SETTINGS
 # SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'podcast.apps.PodcastConfig',
+    'widget_tweaks',
 
 ]
 
@@ -79,12 +84,16 @@ WSGI_APPLICATION = 'podcast_social_network.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+
+# LOCALSERVER SETTINGS
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# HEROKU SETTINGS
 # DATABASES = {'default': dj_database_url.config(default=os.environ["HEROKU_POSTGRESQL_BROWN_URL"])}
 
 # Password validation
@@ -137,3 +146,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+try:
+    from podcast_social_network.development_settings import *
+except ImportError:
+    SECRET_KEY = config('SECRET_KEY')
+    DATABASES = {'default': dj_database_url.config(default=os.environ["HEROKU_POSTGRESQL_BROWN_URL"])}

@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+<h1>Browse Users</h1>
+
+{% endblock %}
 
 {% block content %}
     {% for i in users %}
 
-        <div class="newsfeed-liked-episode">
-                User page here: <a href="/user/{{ i.username}}">{{ i.username }}</a> <br>
+        <div class="row">
+                <a href="/user/{{ i.username}}">{{ i.username }}</a> <br>
             </div>
 
     {% endfor %}

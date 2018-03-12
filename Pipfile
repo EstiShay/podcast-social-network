@@ -7,8 +7,15 @@ name = "pypi"
 
 [packages]
 
-requests = "*"
-
+certifi = "==2018.1.18"
+dj-database-url = "==0.4.2"
+Django = "==2.0.1"
+django-widget-tweaks = "==1.4.1"
+python-decouple = "==3.1"
+pytz = "==2017.3"
+whitenoise = "==3.3.1"
+"psycopg2" = "*"
+xmltodict = '*'
 
 [dev-packages]
 
