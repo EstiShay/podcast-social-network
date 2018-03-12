@@ -1,5 +1,5 @@
 {% load static %}
-{% load widget_tweaks %}
+{#{% load widget_tweaks %}#}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +28,13 @@
 {#    </div>#}
 {#{% endif %}#}
 <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+{#    <div class="container-fluid">#}
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id="menu-button">
-                <i class="fas fa-bars"></i>
+                <div style="color: white">
+                    <i class="fas fa-bars"></i>
+                </div>
+
             </button>
             <a href="#" class="navbar-brand"></a>
         </div>
@@ -50,7 +53,7 @@
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
             </ul>
         </div>
-    </div>
+{#    </div>#}
 </nav>
 
 

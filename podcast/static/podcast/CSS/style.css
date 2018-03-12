@@ -4,6 +4,11 @@ body {
 }
 nav.navbar {
     background-color: #f890e7;
+
+}
+
+div.navbar-header {
+    height: 30px
 }
 
 .episode-seperator {
@@ -23,6 +28,7 @@ nav.navbar {
     border: none;
     width: 100%;
     height: auto;
+
 }
 
 /*.menu-options {*/
