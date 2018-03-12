@@ -1,10 +1,9 @@
 body {
-    background-color: aquamarine;
+    background-color: #0bd3d3;
+    color: white;
 }
-
-.navbar {
-    background-color: aliceblue;
-
+nav.navbar {
+    background-color: #f890e7;
 }
 
 .episode-seperator {
@@ -13,8 +12,30 @@ body {
 }
 
 .newsfeed-liked-episode {
-    background-color: aqua;
-    border: 2px dotted black;
+    background-color: #d0d0d0;
+    border: 2px solid #f890e7;
     padding: 6px;
     margin: 6px;
+}
+
+#menu-button {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: auto;
+}
+
+/*.menu-options {*/
+    /*color: white;*/
+    /*width: 100%;*/
+/*}*/
+
+
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
 }
