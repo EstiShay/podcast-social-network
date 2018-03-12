@@ -11,7 +11,10 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, 'podcast/index.html', {})
+    if request.user.is_authenticated:
+        return render(request, 'podcast/newsfeed.html', {})
+    else:
+        return render(request, 'podcast/index.html', {})
 
 
 @login_required
