@@ -1,57 +1,84 @@
 {% extends 'base.html' %}
 
 
+
+{% block header %}
+    <h1>{{ display_user.username }}</h1>
+{% endblock %}
+
+
+
+
+
 {% block content %}
 
-    <h3>{{ display_user.first_name }} {{ display_user.last_name }}</h3>
-    <p>{{ display_user.bio }}</p>
 
-{#    This section checks if #}
-{#    1) if you're viewing your own page; and if not#}
-{#    2) if you're already following this person#}
     {% if current_user_page %}
         {# If viewing own page, no follow/unfollow button#}
     {% else %}
         {#  If viewing others' page, follow button#}
         {% if already_following %}
             {#  If Following, add UNFOLLOW button#}
-            <button id="un-follow-user" onclick="unFollowUser('{{ request.user.username }}',
+            <button class="btn btn-warning" id="un-follow-user" onclick="unFollowUser('{{ request.user.username }}',
                     '{{ display_user.username }}')">Unfollow {{ display_user.username }}</button>
         {% else %}
-        {#  If Not Following, add FOLLOW button#}
-            <button id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">
-            Follow {{ display_user.username }}</button>
+            {#  If Not Following, add FOLLOW button#}
+            <button class="btn btn-light" id="follow-user" onclick="followUser('{{ request.user.username }}', '{{ display_user.username }}')">
+                Follow {{ display_user.username }}</button>
         {% endif %}
     {% endif %}
 
+    <div class="row">
+    {% if display_user.bio %}
+        <p>{{ display_user.bio }}</p>
+    {% endif %}
+    </div>
 
-    <h2><h1>Following</h1> these Users:</h2>
-    <div id="user-following">
+    {% if user_likes %}
+    <h2>Recommended Episodes:</h2>
+    <div class="container" id="user_likes">
+        {% for i in user_likes %}
+            <div class="row">
+                <div class="col-1" style="color: #f890e7"><i class="fas fa-heart"></i></div>
+                <div class="col-5">{{ i.episode.podcast }}</div>
+                <div class="col-6">
+                    <a style="text-decoration: underline" href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a><br>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+
+    {% if followers %}
+    <h2>Following these Users:</h2>
+    <div class="container" id="user-following">
         {% for i in followers %}
-            <p><a href="/user/{{ i.following.username }}">{{ i.following.username }}</p></a>
+            <div class="row">
+                <div class="col-1" style="color: #f890e7"><i class="fas fa-arrow-circle-down"></i></div>
+                <div class="col-11">
+                    <a href="/user/{{ i.following.username }}">{{ i.following.username }}</a>
+                </div>
+            </div>
         {% endfor %}
     </div>
+    {% endif %}
 
-    <h2><h1>Followed</h1> by these Users:</h2>
-    <div id="user-followed-by">
+    {% if followed_by_list %}
+    <h2>Followed by these Users:</h2>
+    <div class="container" id="user-followed-by">
         {% for i in followed_by_list %}
-            {#    {{ followed_by_list }}#}
-            <p><a href="/user/{{ i.user.username }}">{{ i.user }}</a></p>
-            <br>
-
+            <div class="row">
+                <div class="col-1" style="color: #f890e7"><i class="fas fa-bullhorn"></i></div>
+                <div class="col-11"><a href="/user/{{ i.user.username }}">{{ i.user }}</a></div>
+            </div>
         {% endfor %}
     </div>
+    {% endif %}
 
     {#     <a href="/user/{{ i.username}}">{{ i.username }}</a>#}
 
-    <h2>Recommends these episodes</h2>
-    <div id="user_likes">
-        <p>
-            {% for i in user_likes %}
-                <a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a><br>
-                <br>
-                </p>
-            {% endfor %}
-    </div>
+
 
 {% endblock %}

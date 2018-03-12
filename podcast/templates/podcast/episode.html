@@ -1,20 +1,30 @@
 {% extends 'base.html' %}
 
+{% block header %}
+    <h1>{{ episode.title }}</h1>
+
+
+{% endblock %}
+
+
 {% block content %}
-    <img src="{{ episode.podcast.large_art }}" alt="episode image">
-    <br>
-    <br>
-    {{ episode.title }}<br>
-    <br>
-    {{ episode.description }}<br>
+    <div class="row">
+        <img id="episode-cover-art" src="{{ episode.podcast.large_art }}" alt="episode image">
+    </div>
+    <div class="row">
+        {{ episode.description }}
+    </div>
+    <div class="row">
+        <audio controls src="{{ episode.audio_link }}"></audio>
+    </div>
 
-    <audio controls src="{{ episode.audio_link }}"></audio><br>
-    <button class="like-button" onclick="addToLikes('{{ episode.title }}')">TELL THE WORLD YOU LIKE IT</button>
-
+    <div class="row">
+    <button class="btn btn-light like-button" onclick="addToLikes('{{ episode.title }}')">TELL THE WORLD YOU LIKE IT</button>
+    </div>
     <h3>Recommended by:</h3>
 
     {% for i in recommending_users %}
-       <p><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></p>
+        <p><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></p>
 
     {% endfor %}
 
