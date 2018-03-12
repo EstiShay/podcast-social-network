@@ -816,9 +816,6 @@ function addToLikes(name) {
 
 function followUser(user, following) {
     event.preventDefault();
-    console.log('FOLLOW');
-    console.log(user);
-    console.log(following)
     $.ajax({
         type: "POST",
         url: '/followuser/',
@@ -827,7 +824,7 @@ function followUser(user, following) {
             following: following,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            // console.log('success')
+
             document.location.reload()
         }, error: function (response) {
             console.log('fail')
@@ -837,9 +834,6 @@ function followUser(user, following) {
 
 function unFollowUser(user, following) {
     event.preventDefault();
-    console.log('unfollow');
-    console.log(user);
-    console.log(following);
     $.ajax({
         type: "POST",
         url: '/unfollowuser/',
