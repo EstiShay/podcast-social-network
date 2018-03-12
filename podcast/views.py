@@ -3,7 +3,7 @@ import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
 from django.http import HttpResponse
-
+import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
@@ -27,18 +27,19 @@ def newsFeed(request):
     for i in following_list_objects:
         following_list_users.append(i.following)
     following_list_liked_episodes = LikedPodcast.objects.filter(user__in=following_list_users)
-
     return render(request, 'podcast/newsfeed.html', {"liked_episodes": following_list_liked_episodes,
                                                      "user": user,
                                                      "following_list_objects": following_list_objects,
                                                      "following_list_users": following_list_users,
                                                      })
 
+
 @login_required
 def browseUsers(request):
     users = User.objects.exclude(id=request.user.id)
     return render(request, 'podcast/browseusers.html', {"users": users
                                                         })
+
 
 def signup(request):
     if request.method == 'POST':
@@ -160,9 +161,6 @@ def viewProfile(request, username):
                                                         "current_user_page": current_user_page,
                                                         "already_following": already_following
                                                         })
-
-
-
 
 
 def followUser(request):
