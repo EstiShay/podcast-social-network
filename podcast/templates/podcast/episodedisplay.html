@@ -2,13 +2,24 @@
 {% block content %}
     {% autoescape off %}
         {% for i in another_episodes_list %}
-            <div class="episode-seperator">
-                <a href="/episode/{{ i.slug }}"> <h2>{{ i.title }}</h2></a>
-            <audio controls src="{{ i.audio_link }}"></audio>
-            {{ i.description }}<br>
-            {{ i.pub_date }}<br>
-            <br>
-                <button class="like-button" onclick="addToLikes('{{ i.title }}')">TELL THE WORLD YOU LIKE IT</button>
+
+                <div class="row episode-display">
+                    <div class="col-6">
+                    <a href="/episode/{{ i.slug }}"> <h4>{{ i.title }}</h4></a>
+                    </div>
+                <div class="col-6">
+                    <button class="btn btn-light like-button" onclick="addToLikes('{{ i.title }}')">TELL THE WORLD YOU LIKE IT</button>
+                </div>
+                </div>
+
+
+
+{#                <a href="/episode/{{ i.slug }}"> <h2>{{ i.title }}</h2></a>#}
+{##}
+{#            {{ i.description }}<br>#}
+{#            {{ i.pub_date }}<br>#}
+{#            <br>#}
+
             </div>
 
             <br>

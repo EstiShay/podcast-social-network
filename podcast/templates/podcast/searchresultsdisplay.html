@@ -1,17 +1,13 @@
-<h2>searchResultsDisplay</h2>
-
 
 {% for i in search_result %}
-    <p>{{ i.trackName }}</p>
-    {#    <a href="/episodedisplay/" id={{ i.rss_feed_url }}><img src={{ i.artworkUrl60 }} alt=""></a>#}
-    <img src="{{ i.artworkUrl60 }}" alt="image" onclick="clickCoverImage('{{ i.feedUrl }}', '{{ i.collectionId }}', '{{ i.trackName }}')"
-         class="podcast-cover-image">
-    <p>{{ i.feedUrl }}</p>
-    <div class="episodes" id="{{ i.collectionId }}">
-
+    <div class="row">
+    <div class="col-6"><h4>{{ i.trackName }}</h4></div>
+        <div class="col-6"><img src="{{ i.artworkUrl60 }}" alt="image" onclick="clickCoverImage('{{ i.feedUrl }}', '{{ i.collectionId }}', '{{ i.trackName }}')"
+         class="podcast-cover-image"></div>
     </div>
-    <br>
-    <br>
+    <div class="episodes" id="{{ i.collectionId }}">
+    </div>
+
 
 {% endfor %}
 
