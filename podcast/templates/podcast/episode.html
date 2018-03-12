@@ -4,7 +4,17 @@
     <h1>{{ episode.title }}</h1>
 
 
+
+    <audio controls src="{{ episode.audio_link }}"></audio><br>
+    {% if already_liked %}
+        <button id="unlike-button" onclick="removeFromLikes('{{ request.user.username }}','{{ episode.title }}')">UNLIKE</button>
+    {% else %}
+        <button class="like-button" onclick="addToLikes('{{ episode.title }}')">TELL THE WORLD YOU LIKE IT</button>
+
+    {% endif %}
+
 {% endblock %}
+
 
 
 {% block content %}
@@ -27,8 +37,6 @@
         <p><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></p>
 
     {% endfor %}
-
-
 
 
 
