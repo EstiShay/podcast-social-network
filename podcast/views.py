@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
@@ -115,7 +116,9 @@ def episodeDisplay(request):
                                                                'another_episodes_list': another_episodes_list
                                                                })
     except KeyError:
-        return render(request, 'podcast/error.html', {})
+        return render(request, 'podcast/error/keyerror.html', {})
+    except ObjectDoesNotExist:
+        return render(request, 'podcast/error/noobjecterror.html', {})
 
 
 
