@@ -39,7 +39,7 @@ div.navbar-header {
 
 #header-content {
     padding: 5%;
-    padding-bottom: 1px;
+    padding-bottom: px;
     width: 100%;
     text-align: center;
 }
@@ -68,6 +68,10 @@ a:visited {
     margin: auto;
 }
 
+body {
+    padding-top: 65px;
+}
+
 audio {
     margin: 5px;
     width: 100%;
@@ -80,3 +84,10 @@ audio {
 .jumbotron {
     background-color: #f890e7;
 }
+
+.nav-link {
+    width: 80px;
+    text-align: center;
+}
+
+
