@@ -94,4 +94,9 @@ nav.navbar {
     background-color: #f890e7;
 }
 
+button.btn-default {
+    background-color: #f890e7;
+    width: 100%;
+}
+
 

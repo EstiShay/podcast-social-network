@@ -1,22 +1,57 @@
 {% extends 'base.html' %}
-{#{% load widget_tweaks %}#}
+{% load widget_tweaks %}
+
+{% block header %}
+    <h1>Login</h1>
+
+{% endblock %}
+
 
 
 {% block content %}
-    <div class="container">
-        <h2>Login</h2>
+    <div class="container-fluid">
         <form method="POST">
             {% csrf_token %}
-            <div class="form-horizontal">
-                {{ form.as_p }}
-            </div>
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+                    {{ field|add_class:'form-control' }}
+                    {% for error in field.errors %}
+                        <span class="help-block bg-danger">{{ error }}</span>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
             <button type="submit" class="btn btn-default">Log In</button>
         </form>
-        <div id='sign-up-form'>
-            <a href="/signup/">Create a new account</a>
-        </div>
-    </div>
 
+{##}
+{#        {{ form.as_p }}#}
+{##}
+{#        <button type="submit" class="btn btn-default">Log In</button>#}
+{##}
+{#        <div id='sign-up-form'>#}
+{#            <a href="/signup/">Create a new account</a>#}
+{#        </div>#}
+{#    </div>#}
+
+
+
+    {#     <div class="container-fluid">#}
+    {#        <form method="post">#}
+    {#            {% csrf_token %}#}
+    {#            {% for field in form.visible_fields %}#}
+    {#                <div class="form-group">#}
+    {#                    <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>#}
+    {#                    {{ field|add_class:'form-control' }}#}
+    {#                    {% for error in field.errors %}#}
+    {#                        <span class="help-block bg-danger">{{ error }}</span>#}
+    {#                    {% endfor %}#}
+    {#                </div>#}
+    {#            {% endfor %}#}
+    {#            <button type="submit" class="btn btn-default">Sign Up</button>#}
+    {#        </form>#}
+    {#    </div>#}
 
 
 {% endblock %}
