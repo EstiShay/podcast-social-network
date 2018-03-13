@@ -2,7 +2,7 @@ import urllib.request
 import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'podcast/newsfeed.html', {})
+        return HttpResponseRedirect('/newsfeed/')
     else:
         return render(request, 'podcast/index.html', {})
 
