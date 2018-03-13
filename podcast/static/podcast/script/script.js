@@ -773,7 +773,7 @@ function submitPodcastSearch(e) {
 
 function clickCoverImage(xml_link, collection_id, div_id) {
     const rss_feed = xml_link;
-    console.log(collection_id)
+    console.log(collection_id);
     event.preventDefault();
     $.ajax({
         type: 'POST',
@@ -781,7 +781,6 @@ function clickCoverImage(xml_link, collection_id, div_id) {
         data: {
             rss_feed: rss_feed,
             collection_id: collection_id,
-            // podcast_name: podcast_name,
             csrfmiddlewaretoken: csrftoken,
         },
         success: function (response) {
@@ -871,3 +870,4 @@ function unFollowUser(user, following) {
         }
     })
 }
+
