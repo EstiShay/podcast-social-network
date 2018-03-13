@@ -97,6 +97,19 @@ nav.navbar {
 button.btn-default {
     background-color: #f890e7;
     width: 100%;
+    margin-bottom: 5px;
 }
 
+#input-search-field {
+    margin-bottom: 4px;
+}
+
+.podcast-cover-image {
+    margin: 5px;
+    box-shadow: 5px 5px 2px #d0d0d0;
+}
+
+.podcast-name {
+    margin: 5px 2px ;
+}
 
