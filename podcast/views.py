@@ -105,15 +105,18 @@ def addPodcastToModel(call_list):
 def episodeDisplay(request):
     rss_feed = request.POST.get('rss_feed')
     collection_id = request.POST.get('collection_id')
-    episodes = xmlToJson(rss_feed)
-    episodes_list = UrlFinder(episodes)
-    addEpisodeToModel(episodes_list, collection_id)
-    podcast_of_choice = Podcast.objects.get(collection_id=collection_id)
-    another_episodes_list = Episode.objects.filter(podcast=podcast_of_choice)
-    #if LikedPodcast.objects.filter...
-    return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
-                                                           'another_episodes_list': another_episodes_list
-                                                           })
+    try:
+        episodes = xmlToJson(rss_feed)
+        episodes_list = UrlFinder(episodes)
+        addEpisodeToModel(episodes_list, collection_id)
+        podcast_of_choice = Podcast.objects.get(collection_id=collection_id)
+        another_episodes_list = Episode.objects.filter(podcast=podcast_of_choice)
+        return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
+                                                               'another_episodes_list': another_episodes_list
+                                                               })
+    except KeyError:
+        return render(request, 'podcast/error.html', {})
+
 
 
 def addEpisodeToModel(episode_list, collection_id):
