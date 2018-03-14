@@ -26,11 +26,9 @@
         {{ episode.description|safe }}
     </div>
 
-
-{#    <div class="row">#}
-{#    <button class="btn btn-light like-button" onclick="addToLikes('{{ episode.title }}')">TELL THE WORLD YOU LIKE IT</button>#}
-{#    </div>#}
+    {% if recommending_users %}
     <h3>Recommended by:</h3>
+    {% endif %}
 
     {% for i in recommending_users %}
         <p><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></p>
