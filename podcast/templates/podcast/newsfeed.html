@@ -7,7 +7,7 @@
 {% if liked_episodes %}
 
     {% block content %}
-        
+
         <div id="newsfeed">
             {% for i in liked_episodes %}
                 <div class="row">
@@ -18,7 +18,7 @@
                     <div class="row col-8">
                         <div class="col-8"><a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a></div>
                         <div class="row col-8">
-                                <div class="col-8"><i class="fas fa-bullhorn"></i><a href="/user/{{ i.user.username }}"> {{ i.user.username }}</a></div>
+                                <div class="col-8"><div class="bullhorn"><i class="fas fa-bullhorn"></i><a href="/user/{{ i.user.username }}"> {{ i.user.username }}</a></div></div>
                         </div>
                     </div>
                 </div>
