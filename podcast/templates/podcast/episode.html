@@ -16,14 +16,12 @@
 
 
 {% block content %}
-    <div class="row">
+    <div class="row" id="audio-row">
         <audio controls src="{{ episode.audio_link }}"></audio>
     </div>
     <div class="row">
-        <img id="episode-cover-art" src="{{ episode.podcast.large_art }}" alt="episode image">
-    </div>
-    <div class="row">
-        {{ episode.description|safe }}
+        <p><img class="cover-art-float" id="episode-cover-art" src="{{ episode.podcast.large_art }}" alt="episode image">
+      {{ episode.description|safe }}</p>
     </div>
 
     {% if recommending_users %}
