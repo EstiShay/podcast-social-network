@@ -1,11 +1,10 @@
 body {
     /*background-color: #0bd3d3;*/
-    background-color: #000000;
-    color: white;
+    background-color: #cff8fc;
+    color: black;
 }
 nav.navbar {
-    background-color: #f890e7;
-
+    background-color: #3F51B5;
 }
 
 div.navbar-header {
@@ -45,16 +44,16 @@ div.navbar-header {
 }
 
 .row {
-    background-color: #0bd3d3;
+    background-color: white;
     margin-bottom: 2px;
 }
 
 a:link {
-    color: white;
+    color: black;
 }
 
 a:visited {
-    color: white;
+    color: black;
 }
 
 .row-cover-art {
@@ -74,9 +73,22 @@ audio {
 }
 
 .episode-display {
-    background-color: #f890e7;
+    background-color: white;
 }
 
 .jumbotron {
-    background-color: #f890e7;
+    background-color: #3F51B5;
+}
+
+h1 {
+  color: #51ba56;
+}
+
+nav.navbar a {
+  color: #51ba56
+}
+
+.btn {
+  background-color: #ff8800
+  color: #FFFFFF
 }
