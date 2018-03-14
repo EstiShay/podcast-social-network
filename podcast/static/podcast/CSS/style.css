@@ -30,7 +30,6 @@ div.navbar-header {
 
 }
 
-
 .episode-seperator {
     border: solid 2px black;
     width: 100%;
@@ -65,6 +64,25 @@ div.navbar-header {
 .row {
     background-color: white;
     margin-bottom: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.user-profile {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#user-bio {
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.fas {
+  text-align: center;
+  padding-right: 3px;
+  padding-left: 2px;
 }
 
 a:link {
