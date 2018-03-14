@@ -25,7 +25,7 @@
         <img id="episode-cover-art" src="{{ episode.podcast.large_art }}" alt="episode image">
     </div>
     <div class="row">
-        {{ episode.description }}
+        {{ episode.description|safe }}
     </div>
 
 
