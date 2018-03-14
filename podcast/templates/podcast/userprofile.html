@@ -26,7 +26,7 @@
     <div class= "container user-profile" >
 
     {% if display_user.bio %}
-      <div class="row">
+      <div class="row user-row">
         <div class="col-12" id="user-bio">{{ display_user.bio }}</div>
       </div>
     {% endif %}
@@ -37,7 +37,7 @@
     <h4>Recommended Episodes:</h4>
     <div class="container user-profile" id="user-likes">
         {% for i in user_likes %}
-            <div class="row">
+            <div class="row user-row">
                 <div class="col-1" style="color: #4CAF50"><i class="fas fa-heart fa-lg"></i></div>
                 <div class="col-5">{{ i.episode.podcast }}</div>
                 <div class="col-6">
@@ -53,7 +53,7 @@
     <h4>Following these Users:</h4>
     <div class="container user-profile" id="user-following">
         {% for i in followers %}
-            <div class="row">
+            <div class="row user-row">
                 <div class="col-1" style="color: #4CAF50"><i class="fas fa-arrow-circle-down fa-lg"></i></div>
                 <div class="col-11">
                     <a href="/user/{{ i.following.username }}">{{ i.following.username }}</a>
@@ -67,7 +67,7 @@
     <h4>Followed by these Users:</h4>
     <div class="container user-profile" id="user-followed-by">
         {% for i in followed_by_list %}
-            <div class="row">
+            <div class="row user-row">
                 <div class="col-1" style="color: #4CAF50"><i class="fas fa-bullhorn fa-lg"></i></div>
                 <div class="col-11"><a href="/user/{{ i.user.username }}">{{ i.user }}</a></div>
             </div>

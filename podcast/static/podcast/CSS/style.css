@@ -65,12 +65,31 @@ div.navbar-header {
 
 .row {
     background-color: white;
-    margin-bottom: 2px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    /*margin: 3px;*/
     border-radius: 25px;
-    /*padding: 4px;*/
+}
+
+#newsfeed-row {
+  padding: 4px;
+  margin: 3px;
+}
+
+.user-row {
+  margin-bottom: 2px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.browsing-row {
+  margin: 3px;
+}
+
+#browse-row {
+  padding-left: 15px;
+}
+
+.newsfeed-item {
+  padding: 4px;
+  margin: 3px;
 }
 
 .user-profile {

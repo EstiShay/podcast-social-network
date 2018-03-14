@@ -10,15 +10,15 @@
 
         <div id="newsfeed">
             {% for i in liked_episodes %}
-                <div class="row">
+                <div class="row" id="newsfeed-row">
                     <div class="col-4"><img href="/episode/{{ i.episode.slug }}" class="podcast-cover-image"
                                             src="{{ i.episode.podcast.large_art }}"
                                             alt="podcast coverart"></div>
                     <div class="col-8">
-                        <div class="row">
+                        <div class="row newsfeed-item">
                             <a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a></div>
 
-                        <div class=" row">
+                        <div class=" row newsfeed-item">
                             <div class="bullhorn"><i class="fas fa-bullhorn"></i><a
                                     href="/user/{{ i.user.username }}"> {{ i.user.username }}</a></div>
                         </div>
@@ -32,5 +32,3 @@
         <h3>No recommendations... try following some users!</h3>
     </div>
 {% endif %}
-
-
