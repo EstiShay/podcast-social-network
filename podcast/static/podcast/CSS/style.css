@@ -32,7 +32,6 @@ div.navbar-header {
 
 }
 
-
 .episode-seperator {
     border: solid 2px black;
     width: 100%;
@@ -66,12 +65,29 @@ div.navbar-header {
 
 .row {
     background-color: white;
-    margin: 3px;
+    margin-bottom: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    /*margin: 3px;*/
     border-radius: 25px;
-    padding: 4px;
+    /*padding: 4px;*/
+}
 
+.user-profile {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
+#user-bio {
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
+.fas {
+  text-align: center;
+  padding-right: 3px;
+  padding-left: 2px;
 }
 
 a:link {
@@ -150,6 +166,3 @@ button.btn-default {
 .episode-search-name {
     text-align: right;
 }
-
-
-
