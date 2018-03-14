@@ -1,11 +1,11 @@
-
 {% for i in search_result %}
-    <div class="row">
-    <div class="col-6"><h4>{{ i.trackName }}</h4></div>
-        <div class="col-6"><img src="{{ i.artworkUrl60 }}" alt="image" onclick="clickCoverImage('{{ i.feedUrl }}', '{{ i.collectionId }}', '{{ i.trackName }}')"
-         class="podcast-cover-image"></div>
-    </div>
-    <div class="episodes" id="{{ i.collectionId }}">
+    <div class="container-fluid">
+        <div class="row" onclick="clickCoverImage('{{ i.feedUrl }}', '{{ i.collectionId }}', '{{ i.trackName }}')">
+            <div class="col-7"><h6 class=" podcast-name">{{ i.trackName }}</h6></div>
+            <div class="col-5"><img src="{{ i.artworkUrl100 }}" alt="image" class="podcast-cover-image"></div>
+        </div>
+        <div class="episodes" id="{{ i.collectionId }}">
+        </div>
     </div>
 
 

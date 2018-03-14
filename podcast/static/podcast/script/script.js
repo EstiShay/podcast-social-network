@@ -773,7 +773,7 @@ function submitPodcastSearch(e) {
 
 function clickCoverImage(xml_link, collection_id, div_id) {
     const rss_feed = xml_link;
-    console.log(collection_id)
+    console.log(collection_id);
     event.preventDefault();
     $.ajax({
         type: 'POST',
@@ -781,7 +781,6 @@ function clickCoverImage(xml_link, collection_id, div_id) {
         data: {
             rss_feed: rss_feed,
             collection_id: collection_id,
-            // podcast_name: podcast_name,
             csrfmiddlewaretoken: csrftoken,
         },
         success: function (response) {
@@ -806,12 +805,34 @@ function addToLikes(name) {
             },
             success: function (response) {
                 console.log('success :')
+                document.location.reload()
             },
             error: function (response) {
                 console.log('fail :')
             }
         }
     )
+}
+
+function removeFromLikes(user, episode_name) {
+    event.preventDefault();
+    console.log('unlike');
+    console.log('user: ' + user);
+    console.log('ep name: ' + episode_name);
+    $.ajax({
+        type: "POST",
+        url: '/removefromlikes/',
+        data: {
+            user: user,
+            episode_name: episode_name,
+            csrfmiddlewaretoken: csrftoken
+        }, success: function (response) {
+            console.log("success: " + response);
+            document.location.reload()
+        }, error: function (response) {
+            console.log('fail: ' + response)
+        }
+    })
 }
 
 function followUser(user, following) {
@@ -849,11 +870,4 @@ function unFollowUser(user, following) {
         }
     })
 }
-
-
-
-
-
-
-
 

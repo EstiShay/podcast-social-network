@@ -2,17 +2,18 @@ import urllib.request
 import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'podcast/newsfeed.html', {})
+        return HttpResponseRedirect('/newsfeed/')
     else:
         return render(request, 'podcast/index.html', {})
 
@@ -62,8 +63,13 @@ def signup(request):
 def episodePageDisplay(request, slug):
     episode = Episode.objects.get(slug=slug)
     recommending_users = LikedPodcast.objects.filter(episode=episode)
+    if LikedPodcast.objects.filter(user=request.user, episode=episode):
+        already_liked = True
+    else:
+        already_liked = False
     return render(request, 'podcast/episode.html', {"episode": episode,
-                                                    "recommending_users": recommending_users})
+                                                    "recommending_users": recommending_users,
+                                                    "already_liked": already_liked})
 
 
 def json_parser(obj):
@@ -100,14 +106,20 @@ def addPodcastToModel(call_list):
 def episodeDisplay(request):
     rss_feed = request.POST.get('rss_feed')
     collection_id = request.POST.get('collection_id')
-    episodes = xmlToJson(rss_feed)
-    episodes_list = UrlFinder(episodes)
-    addEpisodeToModel(episodes_list, collection_id)
-    podcast_of_choice = Podcast.objects.get(collection_id=collection_id)
-    another_episodes_list = Episode.objects.filter(podcast=podcast_of_choice)
-    return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
-                                                           'another_episodes_list': another_episodes_list
-                                                           })
+    try:
+        episodes = xmlToJson(rss_feed)
+        episodes_list = UrlFinder(episodes)
+        addEpisodeToModel(episodes_list, collection_id)
+        podcast_of_choice = Podcast.objects.get(collection_id=collection_id)
+        another_episodes_list = Episode.objects.filter(podcast=podcast_of_choice)
+        return render(request, 'podcast/episodedisplay.html', {'episodes_list': episodes_list[:5],
+                                                               'another_episodes_list': another_episodes_list
+                                                               })
+    except KeyError:
+        return render(request, 'podcast/error/keyerror.html', {})
+    except ObjectDoesNotExist:
+        return render(request, 'podcast/error/noobjecterror.html', {})
+
 
 
 def addEpisodeToModel(episode_list, collection_id):
@@ -134,6 +146,13 @@ def addToLikes(request):
                                 )
     return HttpResponse('added')
 
+def removeFromLikes(request):
+    user = request.user
+    title = request.POST.get('episode_name')
+    episode = Episode.objects.get(title=title)
+    ep = LikedPodcast.objects.filter(user=user, episode=episode)
+    ep.delete()
+    return HttpResponse('ep')
 
 def alreadyFollowing(user, following):
     if Follower.objects.filter(user=user, following=following):

@@ -1,16 +1,35 @@
 body {
     /*background-color: #0bd3d3;*/
-    background-color: #000000;
-    color: white;
+    /*background-color: #F8B619;*/
+    background-color: #e0be43;
+    /*background-color: ;*/
+    color: black;
 }
-nav.navbar {
-    background-color: #f890e7;
 
+/*NAVBAR  */
+nav.navbar {
+    background-color: #310e59;
+    justify-content: center;
+    /*justify-self: center;*/
 }
 
 div.navbar-header {
     height: 30px;
     /*border: 3px solid yellow;*/
+}
+
+.nav-link {
+    width: 90px;
+    height: auto;
+    text-align: center;
+    /*border: 1px solid black;*/
+}
+
+@media (max-width: 500px) {
+    .nav-link {
+        width: 40px;
+    }
+
 }
 
 .episode-seperator {
@@ -34,27 +53,68 @@ div.navbar-header {
 }
 
 #main-content {
-    padding: 5%;
+    padding: 3%;
 }
 
 #header-content {
     padding: 5%;
-    padding-bottom: 1px;
+    padding-bottom: px;
     width: 100%;
     text-align: center;
 }
 
 .row {
-    background-color: #0bd3d3;
-    margin-bottom: 2px;
+    background-color: white;
+    border-radius: 25px;
+}
+
+#newsfeed-row {
+  padding: 4px;
+  margin: 3px;
+}
+
+.user-row {
+  margin-bottom: 2px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.browsing-row {
+  margin: 3px;
+}
+
+#browse-row {
+  padding-left: 15px;
+}
+
+.newsfeed-item {
+  padding: 4px;
+  margin: 3px;
+}
+
+.user-profile {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#user-bio {
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.fas {
+  text-align: center;
+  padding-right: 3px;
+  padding-left: 2px;
 }
 
 a:link {
-    color: white;
+    color: black;
 }
 
 a:visited {
-    color: white;
+    color: black;
 }
 
 .row-cover-art {
@@ -68,15 +128,60 @@ a:visited {
     margin: auto;
 }
 
+body {
+    padding-top: 65px;
+}
+
 audio {
     margin: 5px;
     width: 100%;
 }
 
 .episode-display {
-    background-color: #f890e7;
+    background-color: white;
 }
 
 .jumbotron {
-    background-color: #f890e7;
+    background-color: #3F51B5;
+}
+
+h1 {
+  color: #51ba56;
+}
+
+nav.navbar a {
+  color: #51ba56;
+}
+
+.btn {
+  background-color: #ff8800;
+  color: #FFFFFF;
+}
+
+button.btn-default {
+  background-color: #ff8800;
+  color: #FFFFFF;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+#input-search-field {
+    margin-bottom: 4px;
+}
+
+.podcast-cover-image {
+    margin: 10px;
+    box-shadow: 5px 5px 2px grey;
+}
+
+.podcast-name {
+    margin: 5px 2px ;
+}
+
+.bullhorn {
+    color: #51ba56;
+}
+
+.episode-search-name {
+    text-align: right;
 }
