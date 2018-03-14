@@ -3,8 +3,12 @@ body {
     background-color: #000000;
     color: white;
 }
+
+/*NAVBAR  */
 nav.navbar {
     background-color: #f890e7;
+    justify-content: center;
+    /*justify-self: center;*/
 
 }
 
@@ -12,6 +16,21 @@ div.navbar-header {
     height: 30px;
     /*border: 3px solid yellow;*/
 }
+
+.nav-link {
+    width: 90px;
+    height: auto;
+    text-align: center;
+    /*border: 1px solid black;*/
+}
+
+@media (max-width: 500px) {
+    .nav-link {
+        width: 40px;
+    }
+    
+}
+
 
 .episode-seperator {
     border: solid 2px black;
@@ -39,7 +58,7 @@ div.navbar-header {
 
 #header-content {
     padding: 5%;
-    padding-bottom: 1px;
+    padding-bottom: px;
     width: 100%;
     text-align: center;
 }
@@ -68,6 +87,10 @@ a:visited {
     margin: auto;
 }
 
+body {
+    padding-top: 65px;
+}
+
 audio {
     margin: 5px;
     width: 100%;
@@ -80,3 +103,27 @@ audio {
 .jumbotron {
     background-color: #f890e7;
 }
+
+
+
+
+
+button.btn-default {
+    background-color: #f890e7;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#input-search-field {
+    margin-bottom: 4px;
+}
+
+.podcast-cover-image {
+    margin: 5px;
+    box-shadow: 5px 5px 2px #d0d0d0;
+}
+
+.podcast-name {
+    margin: 5px 2px ;
+}
+
