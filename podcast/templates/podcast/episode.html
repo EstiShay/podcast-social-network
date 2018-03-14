@@ -3,8 +3,6 @@
 {% block header %}
     <h1>{{ episode.title }}</h1>
 
-    <p>{{ already_liked }}</p>
-
 {#    <audio controls src="{{ episode.audio_link }}"></audio><br>#}
     {% if already_liked %}
         <button class="btn btn-warning" id="unlike-button" onclick="removeFromLikes('{{ request.user.username }}','{{ episode.title }}')">UNLIKE</button>
