@@ -4,7 +4,10 @@
         {% for i in another_episodes_list %}
 
                 <div class="row episode-display">
-                    <div class="col-12">
+                    <div class="col-3">
+                        {{ i.release_date }}
+                    </div>
+                    <div class="col-9 episode-search-name">
                     <a href="/episode/{{ i.slug }}"> <p class="podcast-name">{{ i.title }}</p></a>
                     </div>
 {#                <div class="col-6">#}

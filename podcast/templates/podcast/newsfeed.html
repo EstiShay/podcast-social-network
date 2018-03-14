@@ -7,18 +7,22 @@
 {% if liked_episodes %}
 
     {% block content %}
-        <div class="row">
-            <div class="col-1">User</div>
-            <div class="col-2">Podcast</div>
-            <div class="col-9">Episode</div>
-        </div>
+
         <div id="newsfeed">
             {% for i in liked_episodes %}
                 <div class="row">
-                    <div class="col-1"><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></div>
-                    <div class="col-2"><img class="row-cover-art" src="{{ i.episode.podcast.small_art }}"
+                    <div class="col-4"><img href="/episode/{{ i.episode.slug }}" class="podcast-cover-image"
+                                            src="{{ i.episode.podcast.large_art }}"
                                             alt="podcast coverart"></div>
-                    <div class="col-9"><a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a></div>
+                    <div class="col-8">
+                        <div class="row">
+                            <a href="/episode/{{ i.episode.slug }}">{{ i.episode.title }}</a></div>
+
+                        <div class=" row">
+                            <div class="bullhorn"><i class="fas fa-bullhorn"></i><a
+                                    href="/user/{{ i.user.username }}"> {{ i.user.username }}</a></div>
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>
