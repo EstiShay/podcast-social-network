@@ -193,13 +193,16 @@ audio {
 }
 
 .jumbotron {
-    background-color: #3F51B5;
+    background-color: #310e59;
+    color: white;
+}
+
+.jumbotron a {
+    color: white;
 }
 
 h1, h4 {
-  /*color: #51ba56;*/
   color: #419945;
-  /*text-shadow: 2px 2px black;*/
 }
 
 nav.navbar a {
