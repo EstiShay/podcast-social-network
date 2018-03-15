@@ -163,6 +163,10 @@ def alreadyFollowing(user, following):
 
 @login_required
 def viewProfile(request, username):
+    #
+    # Views profile based on the User
+    # Displays different divs if user page is the request.user, or if one is already following that user
+    #
     display_user = User.objects.get(username=username)
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
     followers = Follower.objects.filter(user=display_user)
@@ -186,6 +190,10 @@ def viewProfile(request, username):
 
 
 def followUser(request):
+    #
+    # Called by Ajax request onClick
+    # Creates a Follower object
+    #
     user_username = request.POST.get('user')
     user = User.objects.get(username=user_username)
     following_username = request.POST.get('following')
@@ -198,6 +206,10 @@ def followUser(request):
 
 
 def unFollowUser(request):
+    #
+    # Called by Ajax request
+    # Removes Follower object
+    #
     user_username = request.POST.get('user')
     user = User.objects.get(username=user_username)
     following_username = request.POST.get('following')
