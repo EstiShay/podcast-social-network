@@ -18,6 +18,9 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
+//
+// Below is just an example of a JSON return of the Itunes API request
+//
 search_return = {
     "resultCount": 21,
     "results": [
@@ -744,15 +747,20 @@ search_return = {
             "genres": ["Games & Hobbies", "Podcasts", "Automotive"]
         }]
 };
+
+
 $('#podcast-search-form').focus();
 
 
 function submitPodcastSearch(e) {
+    //
+    // AJAX request that calls the searchResultsDisplay function in views.py
+    // uses the string in the search bar to access Itunes API
+    // inserts searchresultsdisplay.html into the search-results div
+    //
     e.preventDefault();
     const searchString = $('#input-search-field').val().toLowerCase();
-    console.log(searchString);
     const searchStringNoSPace = searchString.split(' ').join('+');
-    console.log(searchStringNoSPace)
     $.ajax({
         // type: 'GET',
         type: 'POST',
@@ -765,15 +773,23 @@ function submitPodcastSearch(e) {
             $('#search-results').html(response)
         },
         error: function () {
-            console.log("fail")
+            console.log("e")
         }
     });
 }
 ;
 
 function clickCoverImage(xml_link, collection_id, div_id) {
+    //
+    // By clicking on the cover image of the podcast, user displays that podcast's episodes
+    // Calls the episodeDisplay function in views.py, which,
+    // parses the xml feed to return specific information for that podcast, such as artwork, mp3 url, title, date, etc.
+    // With that info, the Podcast is added to our openDatabase
+    //
+    // Some Podcast use a different XML path than the one we currently are able to navigate.  Need to build an alternative
+    // traversal method
+    //
     const rss_feed = xml_link;
-    console.log(collection_id);
     event.preventDefault();
     $.ajax({
         type: 'POST',
@@ -788,13 +804,16 @@ function clickCoverImage(xml_link, collection_id, div_id) {
             episode_div.innerHTML = response
         },
         error: function () {
-            console.log('fail')
+            console.log('f')
         }
 
     })
 }
 
 function addToLikes(name) {
+    //
+    // Calls addToLikes method in views.py.  Adds episode and user to the database in the Likes table in models.py
+    //
     event.preventDefault();
     $.ajax({
             type: "POST",
@@ -804,21 +823,20 @@ function addToLikes(name) {
                 csrfmiddlewaretoken: csrftoken,
             },
             success: function (response) {
-                console.log('success :')
                 document.location.reload()
             },
             error: function (response) {
-                console.log('fail :')
+                console.log('f')
             }
         }
     )
 }
 
 function removeFromLikes(user, episode_name) {
+    //
+    // Removes episode and user from Likes table in models.py
+    //
     event.preventDefault();
-    console.log('unlike');
-    console.log('user: ' + user);
-    console.log('ep name: ' + episode_name);
     $.ajax({
         type: "POST",
         url: '/removefromlikes/',
@@ -827,7 +845,6 @@ function removeFromLikes(user, episode_name) {
             episode_name: episode_name,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            console.log("success: " + response);
             document.location.reload()
         }, error: function (response) {
             console.log('fail: ' + response)
@@ -836,6 +853,10 @@ function removeFromLikes(user, episode_name) {
 }
 
 function followUser(user, following) {
+    //
+    // calls followUser in views.py
+    // Creates a Following instance in which a user is following another user
+    //
     event.preventDefault();
     $.ajax({
         type: "POST",
@@ -854,6 +875,9 @@ function followUser(user, following) {
 }
 
 function unFollowUser(user, following) {
+    //
+    // Removes following instance from Following model by calling unFollwoUser in views.py
+    //
     event.preventDefault();
     $.ajax({
         type: "POST",
@@ -863,7 +887,6 @@ function unFollowUser(user, following) {
             following: following,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            // console.log("dsadfd   " + response);
             document.location.reload()
         }, error: function (response) {
             console.log('success')

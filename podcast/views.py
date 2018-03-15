@@ -3,7 +3,6 @@ import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
 from django.http import HttpResponse, HttpResponseRedirect
-import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
@@ -12,6 +11,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
+    #
+    # If the user is logged in, send them to their newsfeed. Otherwise, the landing page
+    #
     if request.user.is_authenticated:
         return HttpResponseRedirect('/newsfeed/')
     else:
@@ -20,11 +22,18 @@ def home(request):
 
 @login_required
 def searchPage(request):
+    #
+    # Send user to the search page
+    #
     return render(request, 'podcast/search.html', {})
 
 
 @login_required
 def newsFeed(request):
+    #
+    # The Newsfeed is the liked episodes by the users that the Authenticated user is following
+    # Creates that list by getting the requesting User object and the LikedPodcast objects
+    #
     user = request.user
     following_list_objects = Follower.objects.filter(user=user)
     following_list_users = []
@@ -40,12 +49,18 @@ def newsFeed(request):
 
 @login_required
 def browseUsers(request):
+    #
+    # Renders the page that displays all Users
+    #
     users = User.objects.exclude(id=request.user.id)
     return render(request, 'podcast/browseusers.html', {"users": users
                                                         })
 
 
 def signup(request):
+    #
+    # Renders the New User form
+    #
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
