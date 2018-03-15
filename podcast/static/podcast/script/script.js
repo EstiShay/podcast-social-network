@@ -18,6 +18,9 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
+
+
+// EXAMPLE JSON ITUNES API RETURN
 search_return = {
     "resultCount": 21,
     "results": [
@@ -744,15 +747,17 @@ search_return = {
             "genres": ["Games & Hobbies", "Podcasts", "Automotive"]
         }]
 };
+
 $('#podcast-search-form').focus();
 
 
 function submitPodcastSearch(e) {
+    //
+    // uses the string in the search bar to make a call to iTunes API
+    //
     e.preventDefault();
     const searchString = $('#input-search-field').val().toLowerCase();
-    console.log(searchString);
     const searchStringNoSPace = searchString.split(' ').join('+');
-    console.log(searchStringNoSPace)
     $.ajax({
         // type: 'GET',
         type: 'POST',
@@ -772,8 +777,10 @@ function submitPodcastSearch(e) {
 ;
 
 function clickCoverImage(xml_link, collection_id, div_id) {
+    //
+    // Displays the episodes of a podcast when the cover image is clicked.
+    //
     const rss_feed = xml_link;
-    console.log(collection_id);
     event.preventDefault();
     $.ajax({
         type: 'POST',
@@ -816,9 +823,6 @@ function addToLikes(name) {
 
 function removeFromLikes(user, episode_name) {
     event.preventDefault();
-    console.log('unlike');
-    console.log('user: ' + user);
-    console.log('ep name: ' + episode_name);
     $.ajax({
         type: "POST",
         url: '/removefromlikes/',
@@ -863,7 +867,6 @@ function unFollowUser(user, following) {
             following: following,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            // console.log("dsadfd   " + response);
             document.location.reload()
         }, error: function (response) {
             console.log('success')
