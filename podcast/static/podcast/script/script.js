@@ -18,9 +18,12 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
+
+
 //
 // Below is just an example of a JSON return of the Itunes API request
 //
+
 search_return = {
     "resultCount": 21,
     "results": [
@@ -753,11 +756,9 @@ $('#podcast-search-form').focus();
 
 
 function submitPodcastSearch(e) {
-    //
     // AJAX request that calls the searchResultsDisplay function in views.py
     // uses the string in the search bar to access Itunes API
     // inserts searchresultsdisplay.html into the search-results div
-    //
     e.preventDefault();
     const searchString = $('#input-search-field').val().toLowerCase();
     const searchStringNoSPace = searchString.split(' ').join('+');
@@ -785,9 +786,6 @@ function clickCoverImage(xml_link, collection_id, div_id) {
     // Calls the episodeDisplay function in views.py, which,
     // parses the xml feed to return specific information for that podcast, such as artwork, mp3 url, title, date, etc.
     // With that info, the Podcast is added to our openDatabase
-    //
-    // Some Podcast use a different XML path than the one we currently are able to navigate.  Need to build an alternative
-    // traversal method
     //
     const rss_feed = xml_link;
     event.preventDefault();
