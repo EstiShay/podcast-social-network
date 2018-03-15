@@ -3,7 +3,6 @@ import json
 from podcast.models import Podcast, Episode, User, LikedPodcast, Follower
 from podcast.services import xmlToJson, UrlFinder
 from django.http import HttpResponse, HttpResponseRedirect
-import random
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, SignUpForm
@@ -12,6 +11,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
+    #
+    # If the user is logged in, send them to their newsfeed. Otherwise, the landing page
+    #
     if request.user.is_authenticated:
         return HttpResponseRedirect('/newsfeed/')
     else:
@@ -20,11 +22,18 @@ def home(request):
 
 @login_required
 def searchPage(request):
+    #
+    # Send user to the search page
+    #
     return render(request, 'podcast/search.html', {})
 
 
 @login_required
 def newsFeed(request):
+    #
+    # The Newsfeed is the liked episodes by the users that the Authenticated user is following
+    # Creates that list by getting the requesting User object and the LikedPodcast objects
+    #
     user = request.user
     following_list_objects = Follower.objects.filter(user=user)
     following_list_users = []
@@ -40,12 +49,18 @@ def newsFeed(request):
 
 @login_required
 def browseUsers(request):
+    #
+    # Renders the page that displays all Users
+    #
     users = User.objects.exclude(id=request.user.id)
     return render(request, 'podcast/browseusers.html', {"users": users
                                                         })
 
 
 def signup(request):
+    #
+    # Renders the New User form
+    #
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -61,6 +76,9 @@ def signup(request):
 
 
 def episodePageDisplay(request, slug):
+    #
+    # Displays an individual podcast episode, and who likes that episode
+    #
     episode = Episode.objects.get(slug=slug)
     recommending_users = LikedPodcast.objects.filter(episode=episode)
     if LikedPodcast.objects.filter(user=request.user, episode=episode):
@@ -73,11 +91,17 @@ def episodePageDisplay(request, slug):
 
 
 def json_parser(obj):
+    #
+    # Traverses the JSON return from the iTunes API call
+    #
     results = obj['results']
     return results
 
 
 def searchResultsDisplay(request):
+    #
+    # Calls iTunes API with the term enteres into the search bar
+    #
     search_term = request.POST.get('searchParam')
     itunes_url = str('https://itunes.apple.com/search?term=' + search_term + '&limit=6&media=podcast')
     r = urllib.request.urlopen(itunes_url)
@@ -89,6 +113,9 @@ def searchResultsDisplay(request):
 
 
 def addPodcastToModel(call_list):
+    #
+    # Creates a Podcast instance, unless there already is one that has a unique collection id
+    #
     for i in call_list:
         if Podcast.objects.filter(collection_id=i['collectionId']):
             return
@@ -104,6 +131,11 @@ def addPodcastToModel(call_list):
 
 
 def episodeDisplay(request):
+    #
+    # Traverses the rss feed to display the Episodes of a Podcast
+    # Some podcast have differetn RSS feed structures that are not contemplated in our app
+    # The Try/Excepts below are to catch instances when we cannot display those Episodes
+    #
     rss_feed = request.POST.get('rss_feed')
     collection_id = request.POST.get('collection_id')
     try:
@@ -163,6 +195,10 @@ def alreadyFollowing(user, following):
 
 @login_required
 def viewProfile(request, username):
+    #
+    # Views profile based on the User
+    # Displays different divs if user page is the request.user, or if one is already following that user
+    #
     display_user = User.objects.get(username=username)
     display_user_likes = LikedPodcast.objects.filter(user=display_user)
     followers = Follower.objects.filter(user=display_user)
@@ -186,6 +222,10 @@ def viewProfile(request, username):
 
 
 def followUser(request):
+    #
+    # Called by Ajax request onClick
+    # Creates a Follower object
+    #
     user_username = request.POST.get('user')
     user = User.objects.get(username=user_username)
     following_username = request.POST.get('following')
@@ -198,6 +238,10 @@ def followUser(request):
 
 
 def unFollowUser(request):
+    #
+    # Called by Ajax request
+    # Removes Follower object
+    #
     user_username = request.POST.get('user')
     user = User.objects.get(username=user_username)
     following_username = request.POST.get('following')

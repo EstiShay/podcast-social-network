@@ -25,11 +25,19 @@ div.navbar-header {
     /*border: 1px solid black;*/
 }
 
-@media (max-width: 500px) {
+@media (max-width: 450px) {
     .nav-link {
-        width: 40px;
+        width: 60px;
     }
+}
 
+@media (max-width: 300px) {
+    .nav-link {
+        width: 30px;
+    }
+    .rec-heart-icons {
+        display: none;
+    }
 }
 
 .episode-seperator {
@@ -64,32 +72,39 @@ div.navbar-header {
 }
 
 .row {
-    background-color: white;
+    background-color: rgba(0,0,0,.10);
     border-radius: 25px;
 }
 
 #newsfeed-row {
   padding: 4px;
   margin: 3px;
+
 }
 
 .user-row {
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   padding-top: 3px;
   padding-bottom: 3px;
 }
 
 .browsing-row {
   margin: 3px;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    
 }
 
-#browse-row {
-  padding-left: 15px;
-}
+
 
 .newsfeed-item {
-  padding: 4px;
+  padding: 6px;
   margin: 3px;
+    background-color: transparent;
+    background-color: white;
+    background-color: rgba(255,255,255,.5);
+
 }
 
 .user-profile {
@@ -101,6 +116,22 @@ div.navbar-header {
   padding-left: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+#audio-row {
+  border-radius: 25px;
+    padding: 3px;
+    margin: 10px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: white;
+}
+
+
+.episode-details {
+  padding: 20px;
+  margin: 5px;
 }
 
 .fas {
@@ -121,11 +152,15 @@ a:visited {
     padding: 5px;
 }
 
-#episode-cover-art {
+/*#episode-cover-art {
     padding: 5px;
     text-align: center;
     display: block;
     margin: auto;
+}*/
+
+img.cover-art-float{
+    float: right;
 }
 
 body {
@@ -184,4 +219,8 @@ button.btn-default {
 
 .episode-search-name {
     text-align: right;
+}
+
+.these-users {
+    text-align: center;
 }
