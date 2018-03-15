@@ -1,10 +1,12 @@
 # podcast-social-network
 
-#### By [Esti Shay](https://www.github.com/estishay), [Jeff Bailey](https://github.com/northwestjeff), & [Schola Choi](https://github.com/scholachoi)
+#### By [Esti Shay](https://www.github.com/estishay) & [Jeff Bailey](https://github.com/northwestjeff)
 
 ## Description
 
 GoodReads for podcasts.
+
+We're live on Heroku: https://podcast-social-network.herokuapp.com
 
 ## Technology
 
@@ -12,7 +14,7 @@ This project will use Python, Django, JavaScript, jQuery, HTML, and CSS.
 
 #### Setup/Installation Requirements
 
-To run this project, see Requirements.txt (coming soon).
+To run this project, see Requirements.txt.
 
 ## Specifications
 
@@ -37,7 +39,9 @@ As a listener, I want to...
 2. Login will be embedded on website's homepage instead of a separate page.
 3. Podcasters can advertise live shows, etc. in their subscribers' newsfeed; settings to allow users to opt in/out of such notices.
 
+### Photo Credit
+Photo by [Max Wolfs](https://unsplash.com/photos/yrVv6pwVp78) on [Unsplash](https://unsplash.com/)
 
 ### License
 
-Copyright &copy; 2018 Esti Shay, Jeff Bailey, Schola Choi
+Copyright &copy; 2018 Esti Shay, Jeff Bailey
