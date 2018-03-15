@@ -27,7 +27,11 @@ div.navbar-header {
 
 @media (max-width: 500px) {
     .nav-link {
-        width: 40px;
+        width: 50px;
+    }
+
+    #header-content {
+        font-size: small;
     }
 
 }
