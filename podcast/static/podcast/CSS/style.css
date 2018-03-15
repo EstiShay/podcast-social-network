@@ -25,15 +25,19 @@ div.navbar-header {
     /*border: 1px solid black;*/
 }
 
-@media (max-width: 500px) {
+@media (max-width: 450px) {
     .nav-link {
-        width: 50px;
+        width: 60px;
     }
+}
 
-    #header-content {
-        font-size: small;
+@media (max-width: 300px) {
+    .nav-link {
+        width: 30px;
     }
-
+    .rec-heart-icons {
+        display: none;
+    }
 }
 
 .episode-seperator {
@@ -78,7 +82,7 @@ div.navbar-header {
 }
 
 .user-row {
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   padding-top: 3px;
   padding-bottom: 3px;
 }
@@ -208,4 +212,8 @@ button.btn-default {
 
 .episode-search-name {
     text-align: right;
+}
+
+.these-users {
+    text-align: center;
 }
