@@ -90,11 +90,13 @@ div.navbar-header {
 
 .browsing-row {
   margin: 3px;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    
 }
 
-#browse-row {
-  padding-left: 15px;
-}
+
 
 .newsfeed-item {
   padding: 6px;
