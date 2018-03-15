@@ -102,11 +102,14 @@ div.navbar-header {
 
 .browsing-row {
   margin: 3px;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
 }
 
-#browse-row {
-  padding-left: 15px;
-}
+/*#browse-row {*/
+  /*padding-left: 15px;*/
+/*}*/
 
 .newsfeed-item {
   padding: 6px;
