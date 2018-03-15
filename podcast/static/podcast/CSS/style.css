@@ -36,11 +36,19 @@ div.navbar-header {
     /*border: 1px solid black;*/
 }
 
-@media (max-width: 500px) {
+@media (max-width: 450px) {
     .nav-link {
-        width: 40px;
+        width: 60px;
     }
+}
 
+@media (max-width: 300px) {
+    .nav-link {
+        width: 30px;
+    }
+    .rec-heart-icons {
+        display: none;
+    }
 }
 
 .episode-seperator {
@@ -85,7 +93,7 @@ div.navbar-header {
 }
 
 .user-row {
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   padding-top: 3px;
   padding-bottom: 3px;
 }
@@ -115,8 +123,15 @@ div.navbar-header {
 }
 
 #audio-row {
-  border-radius: 0;
+  border-radius: 25px;
+    padding: 3px;
+    margin: 10px;
 }
+
+audio::-webkit-media-controls-panel {
+    background-color: white;
+}
+
 
 .episode-details {
   padding: 20px;
@@ -211,4 +226,8 @@ button.btn-default {
 
 .episode-search-name {
     text-align: right;
+}
+
+.these-users {
+    text-align: center;
 }
