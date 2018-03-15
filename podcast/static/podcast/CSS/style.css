@@ -10,12 +10,18 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1000px;
+    min-height: 850px;
+    box-sizing: border-box;
 }
 
 #image-soften {
   background-color: rgba(255, 255, 255, .7);
-  height: 1000px;
+  background-attachment: fixed;
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  min-height: 850px;
 }
 
 /*NAVBAR  */
