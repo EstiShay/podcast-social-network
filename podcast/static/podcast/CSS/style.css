@@ -103,6 +103,15 @@ div.navbar-header {
   padding-bottom: 15px;
 }
 
+#audio-row {
+  border-radius: 0;
+}
+
+.episode-details {
+  padding: 20px;
+  margin: 5px;
+}
+
 .fas {
   text-align: center;
   padding-right: 3px;
@@ -121,11 +130,15 @@ a:visited {
     padding: 5px;
 }
 
-#episode-cover-art {
+/*#episode-cover-art {
     padding: 5px;
     text-align: center;
     display: block;
     margin: auto;
+}*/
+
+img.cover-art-float{
+    float: right;
 }
 
 body {

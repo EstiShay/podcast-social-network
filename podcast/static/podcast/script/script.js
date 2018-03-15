@@ -20,7 +20,10 @@ var csrftoken = getCookie('csrftoken');
 
 
 
-// EXAMPLE JSON ITUNES API RETURN
+//
+// Below is just an example of a JSON return of the Itunes API request
+//
+
 search_return = {
     "resultCount": 21,
     "results": [
@@ -748,13 +751,14 @@ search_return = {
         }]
 };
 
+
 $('#podcast-search-form').focus();
 
 
 function submitPodcastSearch(e) {
-    //
-    // uses the string in the search bar to make a call to iTunes API
-    //
+    // AJAX request that calls the searchResultsDisplay function in views.py
+    // uses the string in the search bar to access Itunes API
+    // inserts searchresultsdisplay.html into the search-results div
     e.preventDefault();
     const searchString = $('#input-search-field').val().toLowerCase();
     const searchStringNoSPace = searchString.split(' ').join('+');
@@ -770,7 +774,7 @@ function submitPodcastSearch(e) {
             $('#search-results').html(response)
         },
         error: function () {
-            console.log("fail")
+            console.log("e")
         }
     });
 }
@@ -778,7 +782,10 @@ function submitPodcastSearch(e) {
 
 function clickCoverImage(xml_link, collection_id, div_id) {
     //
-    // Displays the episodes of a podcast when the cover image is clicked.
+    // By clicking on the cover image of the podcast, user displays that podcast's episodes
+    // Calls the episodeDisplay function in views.py, which,
+    // parses the xml feed to return specific information for that podcast, such as artwork, mp3 url, title, date, etc.
+    // With that info, the Podcast is added to our openDatabase
     //
     const rss_feed = xml_link;
     event.preventDefault();
@@ -795,13 +802,16 @@ function clickCoverImage(xml_link, collection_id, div_id) {
             episode_div.innerHTML = response
         },
         error: function () {
-            console.log('fail')
+            console.log('f')
         }
 
     })
 }
 
 function addToLikes(name) {
+    //
+    // Calls addToLikes method in views.py.  Adds episode and user to the database in the Likes table in models.py
+    //
     event.preventDefault();
     $.ajax({
             type: "POST",
@@ -811,17 +821,19 @@ function addToLikes(name) {
                 csrfmiddlewaretoken: csrftoken,
             },
             success: function (response) {
-                console.log('success :')
                 document.location.reload()
             },
             error: function (response) {
-                console.log('fail :')
+                console.log('f')
             }
         }
     )
 }
 
 function removeFromLikes(user, episode_name) {
+    //
+    // Removes episode and user from Likes table in models.py
+    //
     event.preventDefault();
     $.ajax({
         type: "POST",
@@ -831,7 +843,6 @@ function removeFromLikes(user, episode_name) {
             episode_name: episode_name,
             csrfmiddlewaretoken: csrftoken
         }, success: function (response) {
-            console.log("success: " + response);
             document.location.reload()
         }, error: function (response) {
             console.log('fail: ' + response)
@@ -840,6 +851,10 @@ function removeFromLikes(user, episode_name) {
 }
 
 function followUser(user, following) {
+    //
+    // calls followUser in views.py
+    // Creates a Following instance in which a user is following another user
+    //
     event.preventDefault();
     $.ajax({
         type: "POST",
@@ -858,6 +873,9 @@ function followUser(user, following) {
 }
 
 function unFollowUser(user, following) {
+    //
+    // Removes following instance from Following model by calling unFollwoUser in views.py
+    //
     event.preventDefault();
     $.ajax({
         type: "POST",
