@@ -107,6 +107,11 @@ div.navbar-header {
   border-radius: 0;
 }
 
+.episode-details {
+  padding: 20px;
+  margin: 5px;
+}
+
 .fas {
   text-align: center;
   padding-right: 3px;

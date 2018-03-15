@@ -19,19 +19,27 @@
     <div class="row" id="audio-row">
         <audio controls src="{{ episode.audio_link }}"></audio>
     </div>
-    <div class="row">
+    <div class="row episode-details">
         <p><img class="cover-art-float" id="episode-cover-art" src="{{ episode.podcast.large_art }}" alt="episode image">
       {{ episode.description|safe }}</p>
     </div>
 
     {% if recommending_users %}
-    <h3>Recommended by:</h3>
-    {% endif %}
-
+    <div class="row episode-details">
+      <!-- <div class="row"> -->
+        <h3>Recommended by:</h3>
+      <!-- </div> -->
+      <ul>
     {% for i in recommending_users %}
-        <p><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></p>
+      <!-- <div class="row"> -->
+        <li><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></li>
+      <!-- </div> -->
 
     {% endfor %}
+  </ul>
+    </div>
+    {% endif %}
+
 
 
 
