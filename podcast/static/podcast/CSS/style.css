@@ -72,13 +72,14 @@ div.navbar-header {
 }
 
 .row {
-    background-color: white;
+    background-color: rgba(0,0,0,.10);
     border-radius: 25px;
 }
 
 #newsfeed-row {
   padding: 4px;
   margin: 3px;
+
 }
 
 .user-row {
@@ -96,8 +97,12 @@ div.navbar-header {
 }
 
 .newsfeed-item {
-  padding: 4px;
+  padding: 6px;
   margin: 3px;
+    background-color: transparent;
+    background-color: white;
+    background-color: rgba(255,255,255,.5);
+
 }
 
 .user-profile {
