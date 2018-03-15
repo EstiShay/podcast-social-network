@@ -149,6 +149,8 @@ def episodeDisplay(request):
                                                                })
     except KeyError:
         return render(request, 'podcast/error/keyerror.html', {})
+    except TypeError:
+        return render(request, 'podcast/error/keyerror.html', {})
     except ObjectDoesNotExist:
         return render(request, 'podcast/error/noobjecterror.html', {})
 
