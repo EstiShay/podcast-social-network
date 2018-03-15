@@ -12,6 +12,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
+    #
+    # Send to landing page unless the user is already logged in
+    #
     if request.user.is_authenticated:
         return HttpResponseRedirect('/newsfeed/')
     else:
@@ -25,6 +28,9 @@ def searchPage(request):
 
 @login_required
 def newsFeed(request):
+    #
+    # Displays the Liked Episodes of the Users the Logged-in-user is following
+    #
     user = request.user
     following_list_objects = Follower.objects.filter(user=user)
     following_list_users = []
@@ -46,6 +52,9 @@ def browseUsers(request):
 
 
 def signup(request):
+    #
+    # Creates new user
+    #
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -61,6 +70,9 @@ def signup(request):
 
 
 def episodePageDisplay(request, slug):
+    #
+    # Displays an individual podcast episode, and who likes that episode
+    #
     episode = Episode.objects.get(slug=slug)
     recommending_users = LikedPodcast.objects.filter(episode=episode)
     if LikedPodcast.objects.filter(user=request.user, episode=episode):
@@ -73,11 +85,17 @@ def episodePageDisplay(request, slug):
 
 
 def json_parser(obj):
+    #
+    # Traverses the JSON return from the iTunes API call
+    #
     results = obj['results']
     return results
 
 
 def searchResultsDisplay(request):
+    #
+    # Calls iTunes API with the term enteres into the search bar
+    #
     search_term = request.POST.get('searchParam')
     itunes_url = str('https://itunes.apple.com/search?term=' + search_term + '&limit=6&media=podcast')
     r = urllib.request.urlopen(itunes_url)
@@ -89,6 +107,9 @@ def searchResultsDisplay(request):
 
 
 def addPodcastToModel(call_list):
+    #
+    # Creates a Podcast instance, unless there already is one that has a unique collection id
+    #
     for i in call_list:
         if Podcast.objects.filter(collection_id=i['collectionId']):
             return
@@ -104,6 +125,11 @@ def addPodcastToModel(call_list):
 
 
 def episodeDisplay(request):
+    #
+    # Traverses the rss feed to display the Episodes of a Podcast
+    # Some podcast have differetn RSS feed structures that are not contemplated in our app
+    # The Try/Excepts below are to catch instances when we cannot display those Episodes
+    #
     rss_feed = request.POST.get('rss_feed')
     collection_id = request.POST.get('collection_id')
     try:
