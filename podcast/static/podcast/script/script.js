@@ -23,7 +23,6 @@ var csrftoken = getCookie('csrftoken');
 //
 // Below is just an example of a JSON return of the Itunes API request
 //
-
 search_return = {
     "resultCount": 21,
     "results": [
@@ -892,3 +891,14 @@ function unFollowUser(user, following) {
     })
 }
 
+
+// $(window).on('resize', function() {
+//   var win = $(this);
+//   if (win.width() > 480) {
+//       console.log('resize')
+//     $('#user-page-podcast-name-short').removeClass('col-6');
+//     $('#user-page-podcast-name-short').addClass('btn-10');
+//   } else {
+//     // $('#123').removeClass('btn-lg');
+//   }
+// });
