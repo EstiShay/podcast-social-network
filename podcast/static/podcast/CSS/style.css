@@ -10,11 +10,12 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 600px;
+    height: 1000px;
 }
 
 #image-soften {
   background-color: rgba(255, 255, 255, .7);
+  height: 1000px;
 }
 
 /*NAVBAR  */
