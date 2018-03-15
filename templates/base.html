@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Podcast Social Network</title>
@@ -28,6 +29,8 @@
 {#    </div>#}
 {#{% endif %}#}
 <body>
+<div class="parallax">
+<div id="image-soften">
 {#<nav class="navbar navbar-inverse">#}
 {#    <div class="container-fluid">#}
 {% if request.user.is_authenticated %}
@@ -142,4 +145,7 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 <script src="{% static 'podcast/script/script.js' %}"></script>
+
+</div>
+</div>
 </body>
