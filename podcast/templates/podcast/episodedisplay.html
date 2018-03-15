@@ -4,15 +4,14 @@
         {% for i in another_episodes_list %}
 
                 <div class="row episode-display">
-                    <div class="col-3">
-                        {{ i.release_date }}
+                    <div class="col-12">
+                        {{ i.release_date|date }}
+{#                        {{ model.datetime|date:"g:i a" }}#}
                     </div>
-                    <div class="col-9 episode-search-name">
+                    <div class="col-12 episode-search-name">
                     <a href="/episode/{{ i.slug }}"> <p class="podcast-name">{{ i.title }}</p></a>
                     </div>
-{#                <div class="col-6">#}
-{#                    <button class="btn btn-light like-button" onclick="addToLikes('{{ i.title }}')">TELL THE WORLD YOU LIKE IT</button>#}
-{#                </div>#}
+
                 </div>
 
             </div>
