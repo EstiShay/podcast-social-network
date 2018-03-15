@@ -26,14 +26,10 @@
 
     {% if recommending_users %}
     <div class="row episode-details">
-      <!-- <div class="row"> -->
         <h3>Recommended by:</h3>
-      <!-- </div> -->
       <ul>
     {% for i in recommending_users %}
-      <!-- <div class="row"> -->
         <li><a href="/user/{{ i.user.username }}">{{ i.user.username }}</a></li>
-      <!-- </div> -->
 
     {% endfor %}
   </ul>
