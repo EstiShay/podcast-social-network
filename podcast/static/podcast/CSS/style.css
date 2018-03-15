@@ -111,8 +111,8 @@ div.navbar-header {
 .newsfeed-item {
   padding: 6px;
   margin: 3px;
-    background-color: transparent;
-    background-color: white;
+    /*background-color: transparent;*/
+    /*background-color: white;*/
     background-color: rgba(255,255,255,.5);
 
 }
@@ -132,6 +132,7 @@ div.navbar-header {
   border-radius: 25px;
     padding: 3px;
     margin: 10px;
+    background-color: white;
 }
 
 audio::-webkit-media-controls-panel {
@@ -183,7 +184,7 @@ audio {
 }
 
 .episode-display {
-    background-color: white;
+    background-color: rgba(255,255,255,.5);
 }
 
 .jumbotron {
@@ -236,4 +237,8 @@ button.btn-default {
 
 .these-users {
     text-align: center;
+}
+
+#search-results-podcast {
+    margin-bottom: 6px;
 }
