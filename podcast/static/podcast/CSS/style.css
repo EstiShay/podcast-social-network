@@ -104,8 +104,15 @@ div.navbar-header {
 }
 
 #audio-row {
-  border-radius: 0;
+  border-radius: 25px;
+    padding: 3px;
+    margin: 10px;
 }
+
+audio::-webkit-media-controls-panel {
+    background-color: white;
+}
+
 
 .episode-details {
   padding: 20px;
