@@ -116,9 +116,9 @@ div.navbar-header {
 .newsfeed-item {
   padding: 6px;
   margin: 3px;
-    /*background-color: transparent;*/
+    background-color: transparent;
     /*background-color: white;*/
-    background-color: rgba(255,255,255,.5);
+    /*background-color: rgba(255,255,255,.5);*/
 
 }
 
