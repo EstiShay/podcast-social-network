@@ -149,6 +149,8 @@ def episodeDisplay(request):
                                                                })
     except KeyError:
         return render(request, 'podcast/error/keyerror.html', {})
+    except TypeError:
+        return render(request, 'podcast/error/keyerror.html', {})
     except ObjectDoesNotExist:
         return render(request, 'podcast/error/noobjecterror.html', {})
 
@@ -172,7 +174,7 @@ def addEpisodeToModel(episode_list, collection_id):
 def addToLikes(request):
     user = request.user
     episode_name = request.POST.get('episode_name')
-    episode = Episode.objects.get(title=episode_name)
+    episode = Episode.objects.get(slug=episode_name)
     LikedPodcast.objects.create(user=user,
                                 episode=episode,
                                 )
@@ -181,7 +183,7 @@ def addToLikes(request):
 def removeFromLikes(request):
     user = request.user
     title = request.POST.get('episode_name')
-    episode = Episode.objects.get(title=title)
+    episode = Episode.objects.get(slug=title)
     ep = LikedPodcast.objects.filter(user=user, episode=episode)
     ep.delete()
     return HttpResponse('ep')

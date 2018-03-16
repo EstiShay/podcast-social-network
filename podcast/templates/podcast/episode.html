@@ -2,14 +2,12 @@
 
 {% block header %}
     <h1>{{ episode.title }}</h1>
-
-    {#    <audio controls src="{{ episode.audio_link }}"></audio><br>#}
     {% if already_liked %}
         <button class="btn btn-warning" id="unlike-button"
-                onclick="removeFromLikes('{{ request.user.username }}','{{ episode.title }}')">Remove Recommendation!
+                onclick="removeFromLikes('{{ request.user.username }}','{{ episode.slug }}')">Remove Recommendation!
         </button>
     {% else %}
-        <button class="btn btn-warning like-button" onclick="addToLikes('{{ episode.title }}')">Recommend Episode!
+        <button class="btn btn-warning like-button" onclick="addToLikes('{{ episode.slug }}')">Recommend Episode!
         </button>
 
     {% endif %}
